@@ -1,0 +1,44 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.numeric_std.UNSIGNED;
+
+
+entity BinRechner is 
+	 port(Add,Multi,Divi,Sub,rst,clk : in std_ulogic;
+		Operant1 :in std_ulogic_vector(3 downto 0);
+		Operant2 :in std_ulogic_vector(3 downto 0);
+		Result: out std_ulogic_vector(7 downto 0);
+		seg0,seg1,seg2,seg3 :out std_ulogic_vector(6 downto 0));
+end BinRechner;
+architecture Logic of BinRechner is 
+	--signal count: unsigned	(3 downto 0);
+	signal Solve: std_ulogic_vector (7 downto 0);
+	signal once : std_ulogic;
+signal count : integer :=0;
+begin 
+Multiplizierer : process(Multi)
+
+begin
+	
+	if(rising_edge(clk)) then 
+		if rst='0' then 
+			count <=conv_integer(unsigned(Operant1));
+				once<='0';
+		elsif Multi='0' then
+			if once='0' then 
+				once<='1';
+				for I in 0 to count loop
+					Solve <= Operant1+1;
+				end loop;
+				once<='0';
+			end if;
+		else 
+			once<='0';
+		end if;
+	Result<=Solve;
+			
+end process Multiplizierer;
+
+
+end Logic;
