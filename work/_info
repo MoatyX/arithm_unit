@@ -9,23 +9,23 @@ z2
 cModel Technology
 dC:/Modelsim/Modeltech_pe_edu_10.4a/examples
 Ebin_4bit_abs
-Z0 w1584289946
+Z0 w1586004052
 Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z2 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z3 dD:/Projects/ModelSim/Calculator
-Z4 8D:/Projects/ModelSim/Calculator/bin_4bit_abs.vhd
-Z5 FD:/Projects/ModelSim/Calculator/bin_4bit_abs.vhd
+Z3 dC:/Users/mhnou/Bin_Calculator
+Z4 8C:/Users/mhnou/Bin_Calculator/bin_4bit_abs.vhd
+Z5 FC:/Users/mhnou/Bin_Calculator/bin_4bit_abs.vhd
 l0
 L6
 VXd16k9VU5UaFzTYMUDmB>0
 !s100 <h9cj0OzgzQaZdL1^32_o2
 Z6 OP;C;10.4a;61
 32
-Z7 !s110 1584505456
+Z7 !s110 1586154709
 !i10b 1
-Z8 !s108 1584505456.000000
-Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_4bit_abs.vhd|
-Z10 !s107 D:/Projects/ModelSim/Calculator/bin_4bit_abs.vhd|
+Z8 !s108 1586154708.000000
+Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/mhnou/Bin_Calculator/bin_4bit_abs.vhd|
+Z10 !s107 C:/Users/mhnou/Bin_Calculator/bin_4bit_abs.vhd|
 !i113 1
 Z11 o-work work -2002 -explicit -O0
 Z12 tExplicit 1
@@ -51,20 +51,20 @@ Ebin_4bit_comparator
 Z13 w1584231254
 R1
 R2
-R3
-Z14 8D:/Projects/ModelSim/Calculator/bin_4bit_comparator.vhd
-Z15 FD:/Projects/ModelSim/Calculator/bin_4bit_comparator.vhd
+Z14 dD:/Projects/ModelSim/Calculator
+Z15 8D:/Projects/ModelSim/Calculator/bin_4bit_comparator.vhd
+Z16 FD:/Projects/ModelSim/Calculator/bin_4bit_comparator.vhd
 l0
 L4
 VGT9ObfF^SmO?7lSzS:gcJ1
 !s100 L5mNol;FE4YgcNVJ[281l1
 R6
 32
-R7
+Z17 !s110 1584505456
 !i10b 1
-R8
-Z16 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_4bit_comparator.vhd|
-Z17 !s107 D:/Projects/ModelSim/Calculator/bin_4bit_comparator.vhd|
+Z18 !s108 1584505456.000000
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_4bit_comparator.vhd|
+Z20 !s107 D:/Projects/ModelSim/Calculator/bin_4bit_comparator.vhd|
 !i113 1
 R11
 R12
@@ -78,32 +78,32 @@ VB;D:2WWT=7J0GPSn81VV60
 !s100 =VXFPGe7XJ@>L2`SzU2;I2
 R6
 32
-R7
-!i10b 1
-R8
-R16
 R17
+!i10b 1
+R18
+R19
+R20
 !i113 1
 R11
 R12
 Ebin_4bit_inverter
-Z18 w1584220602
+Z21 w1584220602
 R1
 R2
-R3
-Z19 8D:\Projects\ModelSim\Calculator\bin_4bit_inverter.vhd
-Z20 FD:\Projects\ModelSim\Calculator\bin_4bit_inverter.vhd
+R14
+Z22 8D:\Projects\ModelSim\Calculator\bin_4bit_inverter.vhd
+Z23 FD:\Projects\ModelSim\Calculator\bin_4bit_inverter.vhd
 l0
 L6
 VALkYIih2^ACQb[CWSiCYT1
 !s100 V;UKE:hF?Jo_NLf_2d1`N3
 R6
 32
-Z21 !s110 1584220604
+Z24 !s110 1584220604
 !i10b 1
-Z22 !s108 1584220604.000000
-Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\bin_4bit_inverter.vhd|
-Z24 !s107 D:\Projects\ModelSim\Calculator\bin_4bit_inverter.vhd|
+Z25 !s108 1584220604.000000
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\bin_4bit_inverter.vhd|
+Z27 !s107 D:\Projects\ModelSim\Calculator\bin_4bit_inverter.vhd|
 !i113 1
 R11
 R12
@@ -117,32 +117,32 @@ V8^ZU4n2Un5M=bH6V7c=IU3
 !s100 :hYPf8NZQ6[m:Jn;61<>L3
 R6
 32
-R21
-!i10b 1
-R22
-R23
 R24
+!i10b 1
+R25
+R26
+R27
 !i113 1
 R11
 R12
 Ebin_4bit_negator
-Z25 w1584221997
+Z28 w1584221997
 R1
 R2
-R3
-Z26 8D:/Projects/ModelSim/Calculator/bin_4bit_negator.vhd
-Z27 FD:/Projects/ModelSim/Calculator/bin_4bit_negator.vhd
+R14
+Z29 8D:/Projects/ModelSim/Calculator/bin_4bit_negator.vhd
+Z30 FD:/Projects/ModelSim/Calculator/bin_4bit_negator.vhd
 l0
 L7
 VXo8h=_[Ml0>2SP3Z3oaN`3
 !s100 d_7<iFURCQFk9UKM48K>H0
 R6
 32
-R7
+R17
 !i10b 1
-R8
-Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_4bit_negator.vhd|
-Z29 !s107 D:/Projects/ModelSim/Calculator/bin_4bit_negator.vhd|
+R18
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_4bit_negator.vhd|
+Z32 !s107 D:/Projects/ModelSim/Calculator/bin_4bit_negator.vhd|
 !i113 1
 R11
 R12
@@ -156,32 +156,32 @@ V9zlKP0GIL9S?>R?nWLD>_0
 !s100 D_Sj<n=M][Z5jQI7TELFC2
 R6
 32
-R7
+R17
 !i10b 1
-R8
-R28
-R29
+R18
+R31
+R32
 !i113 1
 R11
 R12
 Ebin_adder
-Z30 w1584221672
+Z33 w1584221672
 R1
 R2
-R3
-Z31 8D:/Projects/ModelSim/Calculator/bin_adder.vhd
-Z32 FD:/Projects/ModelSim/Calculator/bin_adder.vhd
+R14
+Z34 8D:/Projects/ModelSim/Calculator/bin_adder.vhd
+Z35 FD:/Projects/ModelSim/Calculator/bin_adder.vhd
 l0
 L4
 Vl;KZbdn3nzE]605niOHl50
 !s100 8FA@N9;Ddjd]Xag>AY;Q42
 R6
 32
-R7
+R17
 !i10b 1
-R8
-Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_adder.vhd|
-Z34 !s107 D:/Projects/ModelSim/Calculator/bin_adder.vhd|
+R18
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_adder.vhd|
+Z37 !s107 D:/Projects/ModelSim/Calculator/bin_adder.vhd|
 !i113 1
 R11
 R12
@@ -195,22 +195,22 @@ VgBTGRJd5Z7OC9PSbmXNTA2
 !s100 75Co;3`ADRS9>aKf128@^3
 R6
 32
-R7
+R17
 !i10b 1
-R8
-R33
-R34
+R18
+R36
+R37
 !i113 1
 R11
 R12
 Ebin_adder_test_bench
 w1586002031
-Z35 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
-Z36 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z37 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z38 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z39 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z40 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 R1
 R2
-R3
+R14
 8D:\Projects\ModelSim\Calculator\bin_adder_test_bench.vhd
 FD:\Projects\ModelSim\Calculator\bin_adder_test_bench.vhd
 l0
@@ -228,29 +228,29 @@ R6
 R11
 R12
 Ebin_divider
-Z38 w1584509054
-R35
+Z41 w1584509054
+R38
 R1
 R2
-R3
-Z39 8D:\Projects\ModelSim\Calculator\bin_divider.vhd
-Z40 FD:\Projects\ModelSim\Calculator\bin_divider.vhd
+R14
+Z42 8D:\Projects\ModelSim\Calculator\bin_divider.vhd
+Z43 FD:\Projects\ModelSim\Calculator\bin_divider.vhd
 l0
 L5
 V0XEFiD@I^mRE536fCbTm42
 !s100 a0g=Y2UIoa3:OaeBL]Wbm0
 R6
 32
-Z41 !s110 1585990130
+Z44 !s110 1585990130
 !i10b 1
-Z42 !s108 1585990130.000000
-Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\bin_divider.vhd|
-Z44 !s107 D:\Projects\ModelSim\Calculator\bin_divider.vhd|
+Z45 !s108 1585990130.000000
+Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\bin_divider.vhd|
+Z47 !s107 D:\Projects\ModelSim\Calculator\bin_divider.vhd|
 !i113 1
 R11
 R12
 Alogic
-R35
+R38
 R1
 R2
 DEx4 work 11 bin_divider 0 22 0XEFiD@I^mRE536fCbTm42
@@ -260,32 +260,32 @@ V_k2Vn:7<^7EA?Pi51?Xce2
 !s100 h`amQHKc]V7=obc<RIJX41
 R6
 32
-R41
-!i10b 1
-R42
-R43
 R44
+!i10b 1
+R45
+R46
+R47
 !i113 1
 R11
 R12
 Ebin_inverter
-Z45 w1584214910
+Z48 w1584214910
 R1
 R2
-R3
-Z46 8D:\Projects\ModelSim\Calculator\bin_inverter.vhd
-Z47 FD:\Projects\ModelSim\Calculator\bin_inverter.vhd
+R14
+Z49 8D:\Projects\ModelSim\Calculator\bin_inverter.vhd
+Z50 FD:\Projects\ModelSim\Calculator\bin_inverter.vhd
 l0
 L6
 V;Njh0iK;[lWT21DRkFFPS0
 !s100 7?]]Xj;kbH758zN32:>671
 R6
 32
-Z48 !s110 1584217481
+Z51 !s110 1584217481
 !i10b 1
-Z49 !s108 1584217481.000000
-Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\bin_inverter.vhd|
-Z51 !s107 D:\Projects\ModelSim\Calculator\bin_inverter.vhd|
+Z52 !s108 1584217481.000000
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\bin_inverter.vhd|
+Z54 !s107 D:\Projects\ModelSim\Calculator\bin_inverter.vhd|
 !i113 1
 R11
 R12
@@ -299,32 +299,32 @@ VDlJPzNXfzhl<K13Q]=Ufi0
 !s100 Slk^2elgR4IBE?FU0N5Al2
 R6
 32
-R48
-!i10b 1
-R49
-R50
 R51
+!i10b 1
+R52
+R53
+R54
 !i113 1
 R11
 R12
 Ebin_subtractor
-Z52 w1584222459
+Z55 w1584222459
 R1
 R2
-R3
-Z53 8D:/Projects/ModelSim/Calculator/bin_subtractor.vhd
-Z54 FD:/Projects/ModelSim/Calculator/bin_subtractor.vhd
+R14
+Z56 8D:/Projects/ModelSim/Calculator/bin_subtractor.vhd
+Z57 FD:/Projects/ModelSim/Calculator/bin_subtractor.vhd
 l0
 L4
 V5VZ2SE3bX<1zM2E^?gEaW2
 !s100 ]EHNOfidg4UTW1;j2T8Y_3
 R6
 32
-R7
+R17
 !i10b 1
-R8
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_subtractor.vhd|
-Z56 !s107 D:/Projects/ModelSim/Calculator/bin_subtractor.vhd|
+R18
+Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/bin_subtractor.vhd|
+Z59 !s107 D:/Projects/ModelSim/Calculator/bin_subtractor.vhd|
 !i113 1
 R11
 R12
@@ -338,40 +338,40 @@ V1bSN[K=[K_UdL<]Ie8Fak1
 !s100 @4]I00d:IF9KSJ?C_D`;f1
 R6
 32
-R7
+R17
 !i10b 1
-R8
-R55
-R56
+R18
+R58
+R59
 !i113 1
 R11
 R12
 Ebinrechner
-Z57 w1583851330
-R36
-R37
+Z60 w1583851330
+R39
+R40
 R1
 R2
-R3
-Z58 8F:\Multi\BinRechner.vhd
-Z59 FF:\Multi\BinRechner.vhd
+R14
+Z61 8F:\Multi\BinRechner.vhd
+Z62 FF:\Multi\BinRechner.vhd
 l0
 L6
 VE_`CeKH9NCGVDM;:T0bc`2
 !s100 f;^I1YCGEC[F3<eY4=5KC2
 R6
 32
-Z60 !s110 1585990755
+Z63 !s110 1585990755
 !i10b 1
-Z61 !s108 1585990755.000000
-Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|F:\Multi\BinRechner.vhd|
-Z63 !s107 F:\Multi\BinRechner.vhd|
+Z64 !s108 1585990755.000000
+Z65 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|F:\Multi\BinRechner.vhd|
+Z66 !s107 F:\Multi\BinRechner.vhd|
 !i113 1
 R11
 R12
 Alogic
-R36
-R37
+R39
+R40
 R1
 R2
 DEx4 work 10 binrechner 0 22 E_`CeKH9NCGVDM;:T0bc`2
@@ -381,38 +381,38 @@ Vm2iXDm::icTD<9EH_N0^I0
 !s100 _0Tb@2S``@zGb:?BS5z<]1
 R6
 32
-R60
-!i10b 1
-R61
-R62
 R63
+!i10b 1
+R64
+R65
+R66
 !i113 1
 R11
 R12
 Eexample_shift
-Z64 w1584502866
-R35
+Z67 w1584502866
+R38
 R1
 R2
-R3
-Z65 8D:\Projects\ModelSim\Calculator\example_shift.vhd
-Z66 FD:\Projects\ModelSim\Calculator\example_shift.vhd
+R14
+Z68 8D:\Projects\ModelSim\Calculator\example_shift.vhd
+Z69 FD:\Projects\ModelSim\Calculator\example_shift.vhd
 l0
 L5
 V5i7]4>ebN_SLPQXbO4>?g2
 !s100 _eJ55J6N@gT:3joo[B_dk2
 R6
 32
-Z67 !s110 1584502935
+Z70 !s110 1584502935
 !i10b 1
-Z68 !s108 1584502935.000000
-Z69 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\example_shift.vhd|
-Z70 !s107 D:\Projects\ModelSim\Calculator\example_shift.vhd|
+Z71 !s108 1584502935.000000
+Z72 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\example_shift.vhd|
+Z73 !s107 D:\Projects\ModelSim\Calculator\example_shift.vhd|
 !i113 1
 R11
 R12
 Abehave
-R35
+R38
 R1
 R2
 DEx4 work 13 example_shift 0 22 5i7]4>ebN_SLPQXbO4>?g2
@@ -422,122 +422,122 @@ V`3^5ZKAfXFPblcATT[Q9h3
 !s100 PzZ<MaIojH3dbLRXVGB=R2
 R6
 32
-R67
-!i10b 1
-R68
-R69
 R70
+!i10b 1
+R71
+R72
+R73
 !i113 1
 R11
 R12
 Efa_test_bench
-Z71 w1585997213
-R36
-R37
+Z74 w1585997213
+R39
+R40
 R1
 R2
-R3
-Z72 8D:\Projects\ModelSim\Calculator\fa_test_bench.vhd
-Z73 FD:\Projects\ModelSim\Calculator\fa_test_bench.vhd
+R14
+Z75 8D:\Projects\ModelSim\Calculator\fa_test_bench.vhd
+Z76 FD:\Projects\ModelSim\Calculator\fa_test_bench.vhd
 l0
 L5
 Vz259DPM7MXz4;^YAlHb0O2
 !s100 d_AlDXIb824CT<HIlfAa:3
 R6
 32
-Z74 !s110 1585997220
+Z77 !s110 1585997220
 !i10b 1
-Z75 !s108 1585997220.000000
-Z76 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\fa_test_bench.vhd|
-Z77 !s107 D:\Projects\ModelSim\Calculator\fa_test_bench.vhd|
+Z78 !s108 1585997220.000000
+Z79 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\fa_test_bench.vhd|
+Z80 !s107 D:\Projects\ModelSim\Calculator\fa_test_bench.vhd|
 !i113 1
 R11
 R12
 Awaveforms
-R36
-R37
+R39
+R40
 R1
 R2
-Z78 DEx4 work 13 fa_test_bench 0 22 z259DPM7MXz4;^YAlHb0O2
+DEx4 work 13 fa_test_bench 0 22 z259DPM7MXz4;^YAlHb0O2
 l24
 L8
 VUeS[Y:hM9c:J5EnVZg9VC3
 !s100 2fiUd6U90miH^@DLK[<Z[3
 R6
 32
-R74
-!i10b 1
-R75
-R76
 R77
+!i10b 1
+R78
+R79
+R80
 !i113 1
 R11
 R12
 Efull_adder
-Z79 w1579512266
+Z81 w1579512266
 R1
 R2
-R3
-Z80 8D:/Projects/ModelSim/Calculator/full_adder.vhd
-Z81 FD:/Projects/ModelSim/Calculator/full_adder.vhd
+R14
+Z82 8D:/Projects/ModelSim/Calculator/full_adder.vhd
+Z83 FD:/Projects/ModelSim/Calculator/full_adder.vhd
 l0
 L4
 VhcF6[CgDNgl`Clj9Ff^;k2
 !s100 KHERT5^QO:VcHa?E]Nf3A3
 R6
 32
-R7
+R17
 !i10b 1
-R8
-Z82 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/full_adder.vhd|
-Z83 !s107 D:/Projects/ModelSim/Calculator/full_adder.vhd|
+R18
+Z84 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/full_adder.vhd|
+Z85 !s107 D:/Projects/ModelSim/Calculator/full_adder.vhd|
 !i113 1
 R11
 R12
 Alogic
 R1
 R2
-Z84 DEx4 work 10 full_adder 0 22 hcF6[CgDNgl`Clj9Ff^;k2
+DEx4 work 10 full_adder 0 22 hcF6[CgDNgl`Clj9Ff^;k2
 l22
 L13
 V;9Igf^NSzVNegK[Doa=>O1
 !s100 6Reo625[>eKc<T1Db7K<m3
 R6
 32
-R7
+R17
 !i10b 1
-R8
-R82
-R83
+R18
+R84
+R85
 !i113 1
 R11
 R12
 Eha_test_bench
-Z85 w1585993135
-R36
-R37
+Z86 w1585993135
+R39
+R40
 R1
 R2
-R3
-Z86 8D:\Projects\ModelSim\Calculator\ha_test_bench.vhd
-Z87 FD:\Projects\ModelSim\Calculator\ha_test_bench.vhd
+R14
+Z87 8D:\Projects\ModelSim\Calculator\ha_test_bench.vhd
+Z88 FD:\Projects\ModelSim\Calculator\ha_test_bench.vhd
 l0
 L5
 V[@JTAC`??5j:D:dCC9D=k3
 !s100 9MbKBK9QOHNXoI1<A@MzQ2
 R6
 32
-Z88 !s110 1585997169
+Z89 !s110 1585997169
 !i10b 1
-Z89 !s108 1585997169.000000
-Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\ha_test_bench.vhd|
-Z91 !s107 D:\Projects\ModelSim\Calculator\ha_test_bench.vhd|
+Z90 !s108 1585997169.000000
+Z91 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\ha_test_bench.vhd|
+Z92 !s107 D:\Projects\ModelSim\Calculator\ha_test_bench.vhd|
 !i113 1
 R11
 R12
 Awaveforms
-R36
-R37
+R39
+R40
 R1
 R2
 DEx4 work 13 ha_test_bench 0 22 [@JTAC`??5j:D:dCC9D=k3
@@ -547,32 +547,32 @@ V_`nZKKGKnNB:4EH]l=6?c1
 !s100 M3]<LL_?IBKQL<ZFzY1JZ2
 R6
 32
-R88
-!i10b 1
 R89
+!i10b 1
 R90
 R91
+R92
 !i113 1
 R11
 R12
 Ehalf_adder
-Z92 w1579511355
+Z93 w1579511355
 R1
 R2
-R3
-Z93 8D:/Projects/ModelSim/Calculator/half_adder.vhd
-Z94 FD:/Projects/ModelSim/Calculator/half_adder.vhd
+R14
+Z94 8D:/Projects/ModelSim/Calculator/half_adder.vhd
+Z95 FD:/Projects/ModelSim/Calculator/half_adder.vhd
 l0
 L4
 VdVNgf4U7:HG6doO3CXaL=2
 !s100 BBzLX=U@m4bmaecHh22Id0
 R6
 32
-R7
+R17
 !i10b 1
-R8
-Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/half_adder.vhd|
-Z96 !s107 D:/Projects/ModelSim/Calculator/half_adder.vhd|
+R18
+Z96 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/half_adder.vhd|
+Z97 !s107 D:/Projects/ModelSim/Calculator/half_adder.vhd|
 !i113 1
 R11
 R12
@@ -586,32 +586,32 @@ V4W7]W6cMamJWRhFZPQnR<2
 !s100 NcmVU2SlU?1<i_^LZRb]A1
 R6
 32
-R7
+R17
 !i10b 1
-R8
-R95
+R18
 R96
+R97
 !i113 1
 R11
 R12
 Ehalf_uni
-Z97 w1583679423
+Z98 w1583679423
 R1
 R2
-R3
-Z98 8D:/Projects/ModelSim/Calculator/half_uni.vhd
-Z99 FD:/Projects/ModelSim/Calculator/half_uni.vhd
+R14
+Z99 8D:/Projects/ModelSim/Calculator/half_uni.vhd
+Z100 FD:/Projects/ModelSim/Calculator/half_uni.vhd
 l0
 L4
 Voc>k:>NUG=ES@QSGS<MEo3
 !s100 UkM97^7Ikn?`CKS25?Pz[3
 R6
 32
-R7
+R17
 !i10b 1
-R8
-Z100 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/half_uni.vhd|
-Z101 !s107 D:/Projects/ModelSim/Calculator/half_uni.vhd|
+R18
+Z101 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Projects/ModelSim/Calculator/half_uni.vhd|
+Z102 !s107 D:/Projects/ModelSim/Calculator/half_uni.vhd|
 !i113 1
 R11
 R12
@@ -625,22 +625,65 @@ VZ@Y0BS0;K3nHEK:<8RggT2
 !s100 M?VgFjQ7SR4_Zab4M5oB93
 R6
 32
-R7
+R17
 !i10b 1
-R8
-R100
+R18
 R101
+R102
+!i113 1
+R11
+R12
+Emulti
+Z103 w1586154949
+R39
+R40
+R1
+R2
+R3
+Z104 8C:/Users/mhnou/Bin_Calculator/multi.vhd
+Z105 FC:/Users/mhnou/Bin_Calculator/multi.vhd
+l0
+L7
+VfoJga40cB3>XT>:fe=X9^3
+!s100 zA<HPem5TJeO5Jca<_z?I0
+R6
+32
+Z106 !s110 1586154951
+!i10b 1
+Z107 !s108 1586154951.000000
+Z108 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/mhnou/Bin_Calculator/multi.vhd|
+Z109 !s107 C:/Users/mhnou/Bin_Calculator/multi.vhd|
+!i113 1
+R11
+R12
+Alogic
+R39
+R40
+R1
+R2
+Z110 DEx4 work 5 multi 0 22 foJga40cB3>XT>:fe=X9^3
+l16
+L14
+V82R<;kf>?T:bc_WXWEbdW3
+!s100 1=`b1nJhQQObzQhi@@Y8f0
+R6
+32
+R106
+!i10b 1
+R107
+R108
+R109
 !i113 1
 R11
 R12
 Emulti_test
-Z102 w1585990452
-R35
+Z111 w1585990452
+R38
 R1
 R2
-R3
-Z103 8D:\Projects\ModelSim\Calculator\multi_test.vhd
-Z104 FD:\Projects\ModelSim\Calculator\multi_test.vhd
+R14
+Z112 8D:\Projects\ModelSim\Calculator\multi_test.vhd
+Z113 FD:\Projects\ModelSim\Calculator\multi_test.vhd
 l0
 L5
 VMP<eY@J]?;U=mb214i9cU1
@@ -650,13 +693,13 @@ R6
 !s110 1585990457
 !i10b 1
 !s108 1585990457.000000
-Z105 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\multi_test.vhd|
-Z106 !s107 D:\Projects\ModelSim\Calculator\multi_test.vhd|
+Z114 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Projects\ModelSim\Calculator\multi_test.vhd|
+Z115 !s107 D:\Projects\ModelSim\Calculator\multi_test.vhd|
 !i113 1
 R11
 R12
 Alogic
-R35
+R38
 R1
 R2
 DEx4 work 10 multi_test 0 22 MP<eY@J]?;U=mb214i9cU1
@@ -669,65 +712,108 @@ R6
 !s110 1585990441
 !i10b 1
 !s108 1585990441.000000
-R105
-R106
+R114
+R115
+!i113 1
+R11
+R12
+Emulti_test_bench
+Z116 w1586155223
+R39
+R40
+R1
+R2
+R3
+Z117 8C:/Users/mhnou/Bin_Calculator/multi_test_bench.vhd
+Z118 FC:/Users/mhnou/Bin_Calculator/multi_test_bench.vhd
+l0
+L5
+VX`gDmUmiNMJggXPC`]zHT2
+!s100 :45aEkR4XNOi65cA6>_Wb2
+R6
+32
+Z119 !s110 1586155224
+!i10b 1
+Z120 !s108 1586155224.000000
+Z121 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/mhnou/Bin_Calculator/multi_test_bench.vhd|
+Z122 !s107 C:/Users/mhnou/Bin_Calculator/multi_test_bench.vhd|
+!i113 1
+R11
+R12
+Awaveforms
+R39
+R40
+R1
+R2
+Z123 DEx4 work 16 multi_test_bench 0 22 X`gDmUmiNMJggXPC`]zHT2
+l23
+L8
+Z124 VTPan^Rkbl0]o^V6^oPJ=^3
+Z125 !s100 a7fzPlmC`b[mdYjbgLSZl0
+R6
+32
+R119
+!i10b 1
+R120
+R121
+R122
 !i113 1
 R11
 R12
 Cone
-efa_test_bench
+emulti_test_bench
 awaveforms
-R84
-DAx4 work 13 fa_test_bench 9 waveforms 22 UeS[Y:hM9c:J5EnVZg9VC3
-R36
-R37
+R110
+DAx4 work 16 multi_test_bench 9 waveforms 22 TPan^Rkbl0]o^V6^oPJ=^3
+R39
+R40
 R1
 R2
-R78
-R71
+R123
+R116
 R3
-R72
-R73
+R117
+R118
 l0
-L51
-VA:R:016N2>P`[0JWTIoi[1
-!s100 YRaWO_E0CVFgV:ZEFl`Aa0
+L57
+VfcQXF8AzkDPaHi2=n8?e^2
+!s100 IZUIUaOj]X=hD]=1[R2e60
 R6
 32
-R74
+R119
 !i10b 1
-R75
-R76
-R77
+R120
+R121
+R122
 !i113 1
 R11
 R12
 Etest_bench
-R57
-R36
-R37
+R60
+R39
+R40
 R1
 R2
-R3
-Z107 8F:\Multi\test_bench.vhd
-Z108 FF:\Multi\test_bench.vhd
+R14
+Z126 8F:\Multi\test_bench.vhd
+Z127 FF:\Multi\test_bench.vhd
 l0
 L4
 VRRdaM=]1T`4FcTbZ>VQ:J3
 !s100 <g:QK3RXZ?:d@[zhUUGY33
 R6
 32
-Z109 !s110 1585990764
+Z128 !s110 1585990764
 !i10b 1
-Z110 !s108 1585990764.000000
-Z111 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|F:\Multi\test_bench.vhd|
-Z112 !s107 F:\Multi\test_bench.vhd|
+Z129 !s108 1585990764.000000
+Z130 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|F:\Multi\test_bench.vhd|
+Z131 !s107 F:\Multi\test_bench.vhd|
 !i113 1
 R11
 R12
 Awaveforms
-R36
-R37
+R39
+R40
 R1
 R2
 DEx4 work 10 test_bench 0 22 RRdaM=]1T`4FcTbZ>VQ:J3
@@ -737,11 +823,11 @@ VfQ>dY?HT4RdP0G7On@m4z1
 !s100 bZfK@]J8TfMmC:PCg8cjb2
 R6
 32
-R109
+R128
 !i10b 1
-R110
-R111
-R112
+R129
+R130
+R131
 !i113 1
 R11
 R12
