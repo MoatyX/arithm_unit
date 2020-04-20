@@ -1,17 +1,17 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use IEEE.std_logic_unsigned.all;
 use ieee.numeric_std.all;
 
 entity bin_adder_test_bench is
 end bin_adder_test_bench;
 
-architecture waveforms of fa_test_bench is
-		signal T_opA: std_ulogic_vector(3 downto 0) := "0000";	--1st operand
-        signal T_opB: std_ulogic_vector(3 downto 0) := "0000";	--2nd operand
+architecture waveforms of bin_adder_test_bench is
+	signal T_opA: unsigned(3 downto 0) := "0000";	--1st operand
+        signal T_opB: unsigned(3 downto 0) := "0000";	--2nd operand
         signal T_result: std_ulogic_vector (3 downto 0);
         signal T_carry_in: std_ulogic := '0';
         signal T_carry_out: std_ulogic;
+	signal T_overflow: std_ulogic;
 
 	COMPONENT bin_adder
 		PORT(
@@ -19,11 +19,12 @@ architecture waveforms of fa_test_bench is
 			opB: in std_ulogic_vector(3 downto 0);	--2nd operand
 			result: out std_ulogic_vector (3 downto 0);
 			carry_in: in std_ulogic;
-			carry_out: out std_ulogic
+			carry_out: out std_ulogic;
+			overflow: out std_ulogic
 		);
-	END COMPONENT;
+	END component;	
 begin
-	Ba: bin_adder PORT MAP(T_opA, T_opB, T_result, T_carry_in, T_carry_out);
+ba: bin_adder PORT MAP(std_ulogic_vector(T_opA), std_ulogic_vector(T_opB), T_result, T_carry_in, T_carry_out, T_overflow);
 	opA_value: PROCESS
 	begin
 		T_opA<="0000";
@@ -37,15 +38,23 @@ begin
 	opB_value: PROCESS
 	begin
 		T_opB<="0000";
-		wait for 40 ns;
+		wait for 15*40 ns;
 		for I in 0 to 15 loop
-			T_opB <= T_opB + '1';
-			wait for 40 ns;
+			T_opB <= T_opB + 1;
+			wait for 15*40 ns;
 		end loop;
+	end process;
+
+	simTime: process
+	begin
+		wait for 15*40*15 ns;
+    		assert false
+      		report "simulation finished"
+      		severity failure;
 	end process;
 end waveforms;
 
-configuration one of ba_test_bench is
+configuration one of bin_adder_test_bench is
 	for waveforms
 		for ba:bin_adder
 			use entity work.bin_adder(logic);

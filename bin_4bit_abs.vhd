@@ -6,6 +6,7 @@ use ieee.std_logic_1164.all;
 ENTITY bin_4bit_abs is
 PORT(	input: in std_ulogic_vector(3 downto 0);
 	abs_output: out std_ulogic_vector(3 downto 0)
+	-- add overflow ?
 );
 END bin_4bit_abs;
 

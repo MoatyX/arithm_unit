@@ -20,10 +20,12 @@ component bin_subtractor is
         opB: in std_ulogic_vector(3 downto 0);	--2nd operand
         result: out std_ulogic_vector (3 downto 0);
         carry_in: in std_ulogic;
-        carry_out: out std_ulogic
+        carry_out: out std_ulogic;
+	overflow: out std_ulogic
     );
 end component;
 
+signal subber_overflow: std_ulogic;
 
 --the equal function (X == Y)
 function EQUAL_OLD(X,Y: std_ulogic_vector(3 downto 0)) 
@@ -44,29 +46,41 @@ else
 end if;
 end EQUAL_ZERO;
 
+function NEGATIVE(X: std_ulogic_vector(3 downto 0))
+	return std_ulogic is
+begin
+if X(3) = '1' then
+	return '1';
+else
+	return '0';
+end if;
+end NEGATIVE;
+
 signal sub: std_ulogic_vector(3 downto 0);
 begin
 
-subber: bin_subtractor PORT MAP(opA, opB, sub, '0', OPEN);
+subber: bin_subtractor PORT MAP(opA, opB, sub, '0', OPEN, subber_overflow);
 
-operation: process(opType, sub) is
+operation: process(opType, sub, subber_overflow) is
 begin
 case opType is
 	when "001" =>	--Equal operation
 		--result <= EQUAL_OLD(opA, opB);
 		result <= EQUAL_ZERO(sub);
 	when "010" =>	--greater than operation
-		-- opA - opB = 0xxx (postive number that is not 0)
-		result <= (sub(3) XNOR '0') AND (NOT EQUAL_ZERO(sub));
+		-- opA - opB = 0ddd (postive number that is NOT 0)
+		-- consider overflows as well as a potential error. use XOR to solve overflow problems
+		result <= ((sub(3) XNOR '0') XOR subber_overflow) AND (NOT EQUAL_ZERO(sub));
 	when "100" =>	--smaller than operation
-		-- opA - opB = 1xxx (negative number that is not 0)
-		result <= (sub(3) AND '1') AND (NOT EQUAL_ZERO(sub));
+		-- opA - opB = 1ddd (negative number that is NOT 0)
+		-- consider overflows as well as a potential error. use XOR to solve overflow problems
+		result <= ((sub(3) XNOR '1') XOR subber_overflow) AND (NOT EQUAL_ZERO(sub));
 	when "011" =>	--greater equal operation
-		-- opA - opB = 0xxx | 0000 (postive number that CAN be 0)
-		result <= (sub(3) XNOR '0') OR EQUAL_ZERO(sub);
+		-- opA - opB = 0ddd | 0000 (postive number that CAN be 0)
+		result <= ((sub(3) XNOR '0') XOR subber_overflow) OR EQUAL_ZERO(sub);
 	when "101" =>	--smaller than operation
-		-- opA - opB = 1xxx | 0000 (negative number that CAN be 0)
-		result <= (sub(3) AND '1') OR EQUAL_ZERO(sub);
+		-- opA - opB = 1ddd | 0000 (negative number that CAN be 0)
+		result <= ((sub(3) XNOR '1') XOR subber_overflow) OR EQUAL_ZERO(sub);
 	when others => result <= 'U';
 end case;
 end process;
