@@ -1,8 +1,10 @@
 
 #ignore ModelSim-specific files from git
 
-/work
+work/
 *.bak
 !*.vhd
 *.wlf
 wlf*
+*.mti
+*.mpf

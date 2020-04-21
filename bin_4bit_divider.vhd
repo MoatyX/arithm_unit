@@ -47,17 +47,19 @@ end component;
 
 signal tmp_dividend: std_ulogic_vector (3 downto 0) := "UUUU";
 signal sub_result: std_ulogic_vector (3 downto 0) := "UUUU";
-signal comp_result, finish: std_ulogic;
+signal comp_zero_result, finish: std_ulogic;
+signal comp_rest_result: std_ulogic;
 signal div_step: std_ulogic_vector (3 downto 0) := "0000";
 signal div_step_increment_result: std_ulogic_vector (3 downto 0);
 
 begin
 
 subber: bin_subtractor PORT MAP(tmp_dividend, divisor, sub_result, '0', OPEN, OPEN);
-comp: bin_4bit_comparator PORT MAP(sub_result, "0000", "101", comp_result);
+comp_zero: bin_4bit_comparator PORT MAP(sub_result, "0000", "001", comp_zero_result);
+comp_rest: bin_4bit_comparator PORT MAP(sub_result, "0000", "100", comp_rest_result);
 adder: bin_adder PORT MAP(div_step, "0001", div_step_increment_result, '0', OPEN, OPEN);
 
-myProcess: process(clk, comp_result, reset)
+myProcess: process(clk, comp_zero_result, reset)
 begin
 	if (reset ='1') then
 		finish <= '0';
@@ -68,11 +70,17 @@ begin
 	if tmp_dividend = "UUUU" then
 		tmp_dividend <= dividend;
 	end if;
-	if (rising_edge(clk) AND reset='0')then
-		if comp_result='0' then
+	if (rising_edge(clk) AND reset='0') then
+		-- if we dont reach zero or below, keep subtracting
+		if (comp_zero_result='0' AND comp_rest_result='0') then
+			--keep subtracting and increment the division_step
 			tmp_dividend <= sub_result;
 			div_step <= div_step_increment_result; 
 		else
+			--we reached 0 or below, if we go under 0, ignore the last subtraction as a division step
+			if(comp_rest_result='0') then
+				div_step <= div_step_increment_result;
+			end if;
 			finish <= '1';
 		end if;
 	end if;
