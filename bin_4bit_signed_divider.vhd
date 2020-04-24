@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity bin_4bit_divider is
+entity bin_4bit_signed_divider is
 port(
 	clk: in std_ulogic;
 	reset: in std_ulogic := '0';
@@ -10,11 +10,11 @@ port(
 	divisor: in std_ulogic_vector (3 downto 0);
 	output: out std_ulogic_vector (3 downto 0);
 	division_by_zero: out std_ulogic;
-	operation_finished: out std_ulogic;
+	operation_finished: out std_ulogic
 );
-end bin_4bit_divider;
+end bin_4bit_signed_divider;
 
-architecture logic of bin_4bit_divider is
+architecture logic of bin_4bit_signed_divider is
 
 COMPONENT bin_4bit_comparator is
 port(	opA: in std_ulogic_vector(3 downto 0);
