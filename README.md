@@ -4,9 +4,9 @@ A simple Hardware Unit written in VHDL that represents a 4 bit device that can d
 as an end project to the course Digital Design at the Ernst Abbe Hochschule Jena.
 
 
-Authors:
-    - Mohamed **Moaty** Hassan (aka Moaty)
-    - Mhammad **Nour** Altahan (aka Nour)
+- Authors:
+   - Mohamed **Moaty** Hassan (aka Moaty)
+   - Mhammad **Nour** Altahan (aka Nour)
 
 The VHDL code was created and simulated using the software **ModelSim** Students Edition on **Windows** machines.
 
