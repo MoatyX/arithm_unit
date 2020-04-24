@@ -92,7 +92,7 @@ subber: bin_subtractor PORT MAP(tmp_dividend, abs_divisor, sub_result, '0', OPEN
 comp_rest: bin_4bit_comparator PORT MAP(sub_result, "0000", "100", comp_rest_result);
 
 division_by_zero <= divisor_eq_zero;
-output_is_negative <= NOT dividend_is_pos OR NOT divisor_is_pos;
+output_is_negative <= (NOT dividend_is_pos OR abs_dividend_overflow) XOR (NOT divisor_is_pos OR abs_divisor_overflow);
 
 myProcess: process(clk, reset, divisor_eq_zero, abs_dividend)
 begin
