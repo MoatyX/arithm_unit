@@ -9,7 +9,8 @@ port(
 	dividend: in std_ulogic_vector (3 downto 0);
 	divisor: in std_ulogic_vector (3 downto 0);
 	output: out std_ulogic_vector (3 downto 0);
-	division_by_zero: out std_ulogic
+	division_by_zero: out std_ulogic;
+	operation_finished: out std_ulogic;
 );
 end bin_4bit_divider;
 
@@ -93,6 +94,7 @@ comp_rest: bin_4bit_comparator PORT MAP(sub_result, "0000", "100", comp_rest_res
 
 division_by_zero <= divisor_eq_zero;
 output_is_negative <= (NOT dividend_is_pos OR abs_dividend_overflow) XOR (NOT divisor_is_pos OR abs_divisor_overflow);
+operation_finished <= finish;	--the finish flag is important for other components (external/internal) to know when are the output signal is valid (we cant know this otherwise becuase the divider needs variable clk cycles per input)
 
 myProcess: process(clk, reset, divisor_eq_zero, abs_dividend)
 begin
@@ -101,7 +103,7 @@ if (divisor_eq_zero='0') then	--dont do anything if we try to divide by 0
 		finish <= '0';
 		tmp_dividend <= "UUUU";
 		div_step <= "0000";
-		--reset <= '0';
+		input_inited <= '0';
 	end if;
 	if (tmp_dividend(3) = 'U') OR (tmp_dividend(2) = 'U') OR (tmp_dividend(1) = 'U') OR (tmp_dividend(0) = 'U') then
 		tmp_dividend <= abs_dividend;
