@@ -2,7 +2,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-
+use IEEE.std_logic_unsigned.all;
 entity multi is 
 	 port(	rst,clk : in std_ulogic;
 		op1 :in std_ulogic_vector(3 downto 0);
@@ -31,7 +31,8 @@ end COMPONENT;
 SIGNAL abs_op1, abs_op2: std_ulogic_vector(3 downto 0);
 SIGNAL abs_op1_overflow, abs_op2_overflow: std_ulogic;
 SIGNAL op1_is_pos, op2_is_pos: std_ulogic;
-
+SIGNAL finish :std_ulogic;
+Signal tmp_outPut :std_logic_vector(7 downto 0);
 SIGNAL output_is_negative: std_ulogic;
 
 begin
@@ -43,5 +44,25 @@ op1_is_pos_comp: bin_4bit_comparator PORT MAP(op1, "0000", "011", op1_is_pos);
 op2_is_pos_comp: bin_4bit_comparator PORT MAP(op2, "0000", "011", op2_is_pos);
 
 output_is_negative <= (NOT op1_is_pos OR abs_op1_overflow) XOR (NOT op2_is_pos OR abs_op2_overflow);
-
+Multiplizierer : process(clk)
+variable pv,bp: std_logic_vector(7 downto 0);
+begin
+pv:="00000000";
+bp:="0000"&std_logic_vector(abs_op2);
+for I in 0 to 3 loop
+	if abs_op1(i)='1' then 
+		pv:=pv+bp;
+	end if;
+	bp:=bp(6 downto 0)&'0';
+end loop;
+finish<='1';
+tmp_outPut<=pv;
+--Result<=pv;
+end process;
+EndCal:process(finish)
+begin
+if finish='1' then
+ --Result<=pv;
+end if;
+end process;
 end Logic;
