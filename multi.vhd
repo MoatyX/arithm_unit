@@ -1,44 +1,47 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use IEEE.std_logic_unsigned.all;
 
 
 entity multi is 
-	 port(Multi,rst,clk : in std_ulogic;
-		Operant1 :in std_logic_vector(3 downto 0);
-		Operant2 :in std_logic_vector(3 downto 0);
-		Result	 :out std_logic_vector(7 downto 0); 
-		seg0,seg1,seg2,seg3 :out std_ulogic_vector(6 downto 0));
+	 port(	rst,clk : in std_ulogic;
+		op1 :in std_ulogic_vector(3 downto 0);
+		op2 :in std_ulogic_vector(3 downto 0);
+		Result	 :out std_logic_vector(7 downto 0)
+		);
 end multi;
-architecture Logic of multi is 
-	signal once : std_ulogic;
-begin 
-Multiplizierer : process(clk)
-variable pv,bp: std_logic_vector(7 downto 0);
+
+architecture Logic of multi is
+
+COMPONENT bin_4bit_abs is
+PORT(	input: in std_ulogic_vector(3 downto 0);
+	abs_output: out std_ulogic_vector(3 downto 0);
+	overflow: out std_ulogic	--happens only when asked for the abs of the min number in 2' complement (in our case, at -8)
+);
+END COMPONENT;
+
+COMPONENT bin_4bit_comparator is
+port(	opA: in std_ulogic_vector(3 downto 0);
+	opB: in std_ulogic_vector(3 downto 0);
+	opType: in std_ulogic_vector(2 downto 0);	--"001" equal, "010" bigger than, "100" smaller than, "011" bigger equal, "101" smaller equal
+	result: out std_ulogic	-- 0(fail) or 1(success)
+);
+end COMPONENT;
+
+SIGNAL abs_op1, abs_op2: std_ulogic_vector(3 downto 0);
+SIGNAL abs_op1_overflow, abs_op2_overflow: std_ulogic;
+SIGNAL op1_is_pos, op2_is_pos: std_ulogic;
+
+SIGNAL output_is_negative: std_ulogic;
+
 begin
-	pv:="00000000";
-	bp:="0000"&Operant2;
-	if(rising_edge(clk)) then 
-		if rst='0' then 
-				once<='0';
-		elsif Multi='0' then
-			if once='0' then 
-				once<='1';
-				for I in 0 to 3 loop
-					if Operant1(i)='1' then 
-						pv:=pv+bp;
-					end if;
-					bp:=bp(6 downto 0)&'0';
-				end loop;
-				
-				once<='0';
-				Result<=pv;
-			end if;
-		else 
-			once<='0';
-		end if;
-			end if;
-end process Multiplizierer;
+
+op1_abs: bin_4bit_abs PORT MAP(op1, abs_op1, abs_op1_overflow);
+op2_abs: bin_4bit_abs PORT MAP(op2, abs_op2, abs_op2_overflow);
+
+op1_is_pos_comp: bin_4bit_comparator PORT MAP(op1, "0000", "011", op1_is_pos);
+op2_is_pos_comp: bin_4bit_comparator PORT MAP(op2, "0000", "011", op2_is_pos);
+
+output_is_negative <= (NOT op1_is_pos OR abs_op1_overflow) XOR (NOT op2_is_pos OR abs_op2_overflow);
 
 end Logic;
