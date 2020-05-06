@@ -14,7 +14,7 @@ end bin_4bit_comparator;
 architecture logic of bin_4bit_comparator is
 
 --4 bit subtractor
-component bin_subtractor is
+component bin_4bit_subtractor is
     port(
         opA: in std_ulogic_vector(3 downto 0);	--1st operand
         opB: in std_ulogic_vector(3 downto 0);	--2nd operand
@@ -59,7 +59,7 @@ end NEGATIVE;
 signal sub: std_ulogic_vector(3 downto 0);
 begin
 
-subber: bin_subtractor PORT MAP(opA, opB, sub, '0', OPEN, subber_overflow);
+subber: bin_4bit_subtractor PORT MAP(opA, opB, sub, '0', OPEN, subber_overflow);
 
 operation: process(opType, sub, subber_overflow) is
 begin

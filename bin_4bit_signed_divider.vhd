@@ -25,7 +25,7 @@ port(	opA: in std_ulogic_vector(3 downto 0);
 end COMPONENT;
 
 --4 bit subtractor
-component bin_subtractor is
+component bin_4bit_subtractor is
     port(
         opA: in std_ulogic_vector(3 downto 0);	--1st operand
         opB: in std_ulogic_vector(3 downto 0);	--2nd operand
@@ -89,7 +89,7 @@ output_negator: bin_4bit_negator PORT MAP(div_Step, negative_output, OPEN);
 
 
 --specific components: components that have special cases
-subber: bin_subtractor PORT MAP(tmp_dividend, abs_divisor, sub_result, '0', OPEN, OPEN);
+subber: bin_4bit_subtractor PORT MAP(tmp_dividend, abs_divisor, sub_result, '0', OPEN, OPEN);
 comp_rest: bin_4bit_comparator PORT MAP(sub_result, "0000", "100", comp_rest_result);
 
 division_by_zero <= divisor_eq_zero;

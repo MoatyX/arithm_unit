@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity bin_subtractor is
+entity bin_4bit_subtractor is
     port(
         opA: in std_ulogic_vector(3 downto 0);	--1st operand
         opB: in std_ulogic_vector(3 downto 0);	--2nd operand
@@ -10,9 +10,9 @@ entity bin_subtractor is
         carry_out: out std_ulogic;
 	overflow: out std_ulogic
     );
-end bin_subtractor;
+end bin_4bit_subtractor;
 
-architecture logic of bin_subtractor is
+architecture logic of bin_4bit_subtractor is
 
 --4 bit adder
 component bin_4bit_adder is
