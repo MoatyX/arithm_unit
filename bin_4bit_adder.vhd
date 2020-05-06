@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity bin_adder is
+entity bin_4bit_adder is
     port(
         opA: in std_ulogic_vector(3 downto 0);	--1st operand
         opB: in std_ulogic_vector(3 downto 0);	--2nd operand
@@ -10,9 +10,9 @@ entity bin_adder is
         carry_out: out std_ulogic;
 	overflow: out std_ulogic
     );
-end bin_adder;
+end bin_4bit_adder;
 
-architecture logic of bin_adder is    
+architecture logic of bin_4bit_adder is    
     component full_adder is
         port(
 		bitA: in std_ulogic;

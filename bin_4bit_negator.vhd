@@ -13,7 +13,7 @@ port(	number: in std_ulogic_vector(3 downto 0);		--the input
 end bin_4bit_negator;
 
 architecture logic of bin_4bit_negator is
-component bin_adder is
+component bin_4bit_adder is
     port(
         opA: in std_ulogic_vector(3 downto 0);
         opB: in std_ulogic_vector(3 downto 0);
@@ -30,5 +30,5 @@ begin
 	out_inv_number(1) <= NOT number(1);
 	out_inv_number(2) <= NOT number(2);
 	out_inv_number(3) <= NOT number(3);
-	x: bin_adder PORT MAP (out_inv_number, "0001", negatedNumber, '0', OPEN, overflow);
+	x: bin_4bit_adder PORT MAP (out_inv_number, "0001", negatedNumber, '0', OPEN, overflow);
 end logic;

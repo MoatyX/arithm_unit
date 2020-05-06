@@ -13,7 +13,8 @@ architecture waveforms of bin_adder_test_bench is
         signal T_carry_out: std_ulogic;
 	signal T_overflow: std_ulogic;
 
-	COMPONENT bin_adder
+	COMPONENT bin_4bit_adder
+
 		PORT(
 			opA: in std_ulogic_vector(3 downto 0);	--1st operand
 			opB: in std_ulogic_vector(3 downto 0);	--2nd operand
@@ -24,7 +25,7 @@ architecture waveforms of bin_adder_test_bench is
 		);
 	END component;	
 begin
-ba: bin_adder PORT MAP(std_ulogic_vector(T_opA), std_ulogic_vector(T_opB), T_result, T_carry_in, T_carry_out, T_overflow);
+ba: bin_4bit_adder PORT MAP(std_ulogic_vector(T_opA), std_ulogic_vector(T_opB), T_result, T_carry_in, T_carry_out, T_overflow);
 	opA_value: PROCESS
 	begin
 		T_opA<="0000";
@@ -56,8 +57,10 @@ end waveforms;
 
 configuration one of bin_adder_test_bench is
 	for waveforms
-		for ba:bin_adder
-			use entity work.bin_adder(logic);
+		for ba:bin_4bit_adder
+	
+			use entity work.bin_4bit_adder
+		(logic);
 		end for;
 	end for;
 end one;

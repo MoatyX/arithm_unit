@@ -36,7 +36,7 @@ component bin_subtractor is
     );
 end component;
 
-component bin_adder is
+component bin_4bit_adder is
     port(
         opA: in std_ulogic_vector(3 downto 0);	--1st operand
         opB: in std_ulogic_vector(3 downto 0);	--2nd operand
@@ -82,7 +82,7 @@ dividend_abs: bin_4bit_abs PORT MAP(dividend, abs_dividend, abs_dividend_overflo
 divisor_abs: bin_4bit_abs PORT MAP(divisor, abs_divisor, abs_divisor_overflow);			--abs(divisor)
 comp_zero: bin_4bit_comparator PORT MAP(sub_result, "0000", "001", comp_zero_result);		--rest = 0 comparator
 comp_divisor_eq_zero: bin_4bit_comparator PORT MAP(divisor, "0000", "001", divisor_eq_zero);	--division by 0
-adder: bin_adder PORT MAP(div_step, "0001", div_step_increment_result, '0', OPEN, OPEN);	--division_step incrementer
+adder: bin_4bit_adder PORT MAP(div_step, "0001", div_step_increment_result, '0', OPEN, OPEN);	--division_step incrementer
 comp_dividend_negative: bin_4bit_comparator PORT MAP(dividend, abs_dividend, "001", dividend_is_pos);		--dividend > 0
 comp_divisor_negative: bin_4bit_comparator PORT MAP(divisor, abs_divisor, "001", divisor_is_pos);		--divisor > 0
 output_negator: bin_4bit_negator PORT MAP(div_Step, negative_output, OPEN);
