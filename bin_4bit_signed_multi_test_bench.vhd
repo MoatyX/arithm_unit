@@ -7,21 +7,21 @@ entity bin_4bit_signed_multi_test_bench is
 end bin_4bit_signed_multi_test_bench;
 
 architecture waveforms of bin_4bit_signed_multi_test_bench is
-	signal T_rst : std_ulogic :='1';
+	signal T_reset : std_ulogic :='1';
 	signal T_clk : std_ulogic :='0';
 	
 	signal	T_Operant1 : std_logic_vector(3 downto 0) := "0000";
 	signal	T_Operant2 : std_logic_vector(3 downto 0) := "1000";
 	signal	T_Result :std_logic_vector(7 downto 0);
 	component bin_4bit_signed_multi
-		port(	rst,clk : in std_ulogic;
+		port(	clk, reset : in std_ulogic;
 		op1 :in std_ulogic_vector(3 downto 0);
 		op2 :in std_ulogic_vector(3 downto 0);
 		Result	 :out std_logic_vector(7 downto 0)
 		);
 		end component;
 	begin
-	multi_inst: bin_4bit_signed_multi port map(T_rst,T_clk,std_ulogic_vector(T_Operant1),std_ulogic_vector(T_Operant2),T_Result);
+	multi_inst: bin_4bit_signed_multi port map(T_reset,T_clk,std_ulogic_vector(T_Operant1),std_ulogic_vector(T_Operant2),T_Result);
 
 	clock_gen: process
 	begin

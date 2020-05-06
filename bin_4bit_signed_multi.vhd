@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 use IEEE.std_logic_unsigned.all;
 
 entity bin_4bit_signed_multi is 
-	 port(	rst,clk : in std_ulogic;
+	 port(	clk,reset : in std_ulogic;
 		op1 :in std_ulogic_vector(3 downto 0);
 		op2 :in std_ulogic_vector(3 downto 0);
 		Result	 :out std_logic_vector(7 downto 0)
