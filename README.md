@@ -1,4 +1,4 @@
-# Bin_Calculator
+# 4-bit Arithmetic Unit
 
 A simple Hardware Unit written in VHDL that represents a 4 bit device that can do 4bit arithmatic operations.
 as an end project to the course Digital Design at the Ernst Abbe Hochschule Jena.
@@ -19,7 +19,7 @@ Here is a guide on how to download this repo and start testing the code on Windo
    this could be done in many ways. it can be downloaded as ZIP directly from GitHub or cloned using the Git Command Line Interface.
    here it is using the Git CLI:
    
-   `git clone https://github.com/MoatyX/Bin_Calculator.git binary_4bit_arithmetic_unit`  
+   `git clone https://github.com/MoatyX/arithm_unit.git binary_4bit_arithmetic_unit`  
 
 2. Open ModelSim. **_File_** -> **_New_** -> **_Project....._**
 3. in the dialog: **_Project Name_**: call the project whatever. **_Project Location_**: choose the folder you cloned the VHDL code in. then click **OK**
