@@ -4,6 +4,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use IEEE.std_logic_unsigned.all;
 
+-- summary: multiplies 2 4bit numbers
+
 entity bin_4bit_signed_multi is 
 	 port(	clk,reset : in std_ulogic;
 		op1 :in std_ulogic_vector(3 downto 0);

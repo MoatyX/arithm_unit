@@ -1,6 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+-- summary: adds 2 4bit nummbers together. also outputs an overflow signal
+
 entity bin_4bit_adder is
     port(
         opA: in std_ulogic_vector(3 downto 0);	--1st operand

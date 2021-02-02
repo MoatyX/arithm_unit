@@ -2,6 +2,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- summary: divides 2 4bit nummbers
+-- algorthim: subtract Operand B from Operand A so long until the subtraction yields a negative number.
+--			  the number of subtractions is the result, and the remaining number before reaching zero is the rest
+
 entity bin_4bit_signed_divider is
 port(
 	clk: in std_ulogic;

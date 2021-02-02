@@ -1,6 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+-- summary: subtracts 2 4bit numbers. and adds overflow an overflow signal 
+
 entity bin_4bit_subtractor is
     port(
         opA: in std_ulogic_vector(3 downto 0);	--1st operand

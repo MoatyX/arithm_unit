@@ -1,6 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+-- summary: compares 2 4bit nummbers according to a 3bit number representing the Operation Type
+-- Operation Types: "001" equal, "010" bigger than, "100" smaller than, "011" bigger equal, "101" smaller equal
+
 entity bin_4bit_comparator is
 port(	opA: in std_ulogic_vector(3 downto 0);
 	opB: in std_ulogic_vector(3 downto 0);
