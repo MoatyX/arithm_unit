@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity au_main is
 port(
@@ -8,7 +9,9 @@ port(
 	operandA: in std_ulogic_vector (3 downto 0);
 	operandB: in std_ulogic_vector (3 downto 0);
 	operation: in std_ulogic_vector (1 downto 0);	-- "00" add, "01" sub, "10" multi, "11" div
-	output: out std_ulogic_vector (7 downto 0)
+	output: out std_ulogic_vector (7 downto 0);
+	operation_finished: out std_ulogic;
+	division_by_zero: out std_ulogic
 );
 end au_main;
 
@@ -61,22 +64,23 @@ signal sub_output, add_output, div_output: std_ulogic_vector (3 downto 0);
 signal multi_output: std_logic_vector (7 downto 0);
 
 signal div_operation_finished: std_ulogic;
-signal div_by_zero: std_ulogic;
 
 signal adder_overflowed, subber_overflowed: std_ulogic;
 --
 
 begin
 
-divider: bin_4bit_signed_divider PORT MAP(clk, reset, operandA, operandB, div_output, div_by_zero, div_operation_finished);
+divider: bin_4bit_signed_divider PORT MAP(clk, reset, operandA, operandB, div_output, division_by_zero, div_operation_finished);
 multiplier: bin_4bit_signed_multi PORT MAP(clk, reset, operandA, operandB, multi_output);
 adder: bin_4bit_adder PORT MAP(operandA, operandB, add_output, '0', OPEN, adder_overflowed);
 subtractor: bin_4bit_subtractor PORT MAP(operandA, operandB, sub_output, '0', OPEN, subber_overflowed);
 
 --map the final output based on the operation
-output <= "0000"&add_output when operation = "00" else 
-	 "0000"&sub_output when operation = "01" else 
+output <= std_ulogic_vector(resize(signed(add_output), output'length))when operation = "00" else 
+	 std_ulogic_vector(resize(signed(sub_output), output'length)) when operation = "01" else
 	 std_ulogic_vector(multi_output) when operation = "10" else 
-	 "0000"&div_output when operation = "11";
+	 std_ulogic_vector(resize(signed(div_output), output'length)) when operation = "11";
+
+operation_finished <= div_operation_finished when operation = "11" else '1';
 
 end logic; 

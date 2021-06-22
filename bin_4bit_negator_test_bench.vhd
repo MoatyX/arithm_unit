@@ -9,7 +9,7 @@ end bin_4bit_negator_test_bench;
 architecture waveforms of bin_4bit_negator_test_bench is
 	SIGNAL T_input: std_ulogic_vector(3 downto 0) := "1000";	-- (-8)
 	SIGNAL T_negator_output: std_ulogic_vector(3 downto 0);
-	SIGNAL T_overflow: out std_ulogic;
+	SIGNAL T_overflow: std_ulogic;
 	
 	COMPONENT bin_4bit_negator
 		port(	number: in std_ulogic_vector(3 downto 0);		--the input
