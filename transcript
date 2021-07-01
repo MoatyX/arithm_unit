@@ -1,0 +1,55 @@
+# Compile of abs_test.vhd was successful.
+# Compile of arithm_unit_main.vhd was successful.
+# Compile of arithm_unit_main_test_bench.vhd was successful.
+# Compile of au_main.vhd was successful.
+# Compile of au_main_test_bench.vhd failed with 1 errors.
+# Compile of au_main_testbench.vhd failed with 1 errors.
+# Compile of bin_4bit_abs.vhd was successful.
+# Compile of bin_4bit_abs_test_bench.vhd was successful.
+# Compile of bin_4bit_adder.vhd was successful.
+# Compile of bin_4bit_adder_test_bench.vhd was successful.
+# Compile of bin_4bit_comparator.vhd was successful.
+# Compile of bin_4bit_comparator_test_bench.vhd was successful.
+# Compile of bin_4bit_inverter.vhd was successful.
+# Compile of bin_4bit_negator.vhd was successful.
+# Compile of bin_4bit_negator_test_bench.vhd was successful.
+# Compile of bin_4bit_signed_divider.vhd was successful.
+# Compile of bin_4bit_signed_divider_test_bench.vhd was successful.
+# Compile of bin_4bit_signed_multi.vhd was successful.
+# Compile of bin_4bit_signed_multi_test_bench.vhd was successful.
+# Compile of bin_4bit_sub_test_bench.vhd failed with 4 errors.
+# Compile of bin_4bit_subtractor.vhd was successful.
+# Compile of bin_8bit_adder.vhd was successful.
+# Compile of bin_8bit_negator.vhd was successful.
+# Compile of fa_test_bench.vhd failed with 4 errors.
+# Compile of full_adder.vhd was successful.
+# Compile of ha_test_bench.vhd failed with 4 errors.
+# Compile of half_adder.vhd was successful.
+# 27 compiles, 5 failed with 14 errors.
+# Compile of abs_test.vhd was successful.
+# Compile of arithm_unit_main.vhd was successful.
+# Compile of arithm_unit_main_test_bench.vhd was successful.
+# Compile of au_main.vhd was successful.
+# Compile of au_main_test_bench.vhd was successful.
+# Compile of bin_4bit_abs.vhd was successful.
+# Compile of bin_4bit_abs_test_bench.vhd was successful.
+# Compile of bin_4bit_adder.vhd was successful.
+# Compile of bin_4bit_adder_test_bench.vhd was successful.
+# Compile of bin_4bit_comparator.vhd was successful.
+# Compile of bin_4bit_comparator_test_bench.vhd was successful.
+# Compile of bin_4bit_inverter.vhd was successful.
+# Compile of bin_4bit_negator.vhd was successful.
+# Compile of bin_4bit_negator_test_bench.vhd was successful.
+# Compile of bin_4bit_signed_divider.vhd was successful.
+# Compile of bin_4bit_signed_divider_test_bench.vhd was successful.
+# Compile of bin_4bit_signed_multi.vhd was successful.
+# Compile of bin_4bit_signed_multi_test_bench.vhd was successful.
+# Compile of bin_4bit_sub_test_bench.vhd was successful.
+# Compile of bin_4bit_subtractor.vhd was successful.
+# Compile of bin_8bit_adder.vhd was successful.
+# Compile of bin_8bit_negator.vhd was successful.
+# Compile of fa_test_bench.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of ha_test_bench.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# 26 compiles, 0 failed with no errors.
