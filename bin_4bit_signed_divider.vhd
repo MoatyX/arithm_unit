@@ -103,26 +103,33 @@ operation_finished <= finish;	--the finish flag is important for other component
 myProcess: process(clk, reset, divisor_eq_zero, abs_dividend)
 begin
 if (divisor_eq_zero='0') then	--dont do anything if we try to divide by 0
-	
-	if (rising_edge(clk) AND reset='0' AND input_inited='1' AND NOT finish='1') then
-		
-		-- if we dont reach zero or below, keep subtracting
-		if (comp_zero_result='0' AND comp_rest_result='0') then
-			--keep subtracting and increment the division_step
-			tmp_dividend <= sub_result;
-			div_step <= div_step_increment_result; 
-		else
-			--we reached 0 or below, if we go under 0, ignore the last subtraction as a division step
-			if(comp_rest_result='0') then
-				div_step <= div_step_increment_result;
-			end if;
-			finish <= '1';
-		end if;
-	else	
+	if (reset ='1') then
 		finish <= '0';
 		tmp_dividend <= "UUUU";
 		div_step <= "0000";
-		--input_inited <= '0';
+		input_inited <= '0';
+	else
+		if (tmp_dividend(3) = 'U') OR (tmp_dividend(2) = 'U') OR (tmp_dividend(1) = 'U') OR (tmp_dividend(0) = 'U') then
+			tmp_dividend <= abs_dividend;
+		else
+			input_inited <= '1';
+		end if;
+		if (rising_edge(clk) AND reset='0' AND input_inited='1' AND finish='0') then
+		
+			-- if we dont reach zero or below, keep subtracting
+			if (comp_zero_result='0' AND comp_rest_result='0') then
+				--keep subtracting and increment the division_step
+				tmp_dividend <= sub_result;
+				div_step <= div_step_increment_result; 
+			else
+				--we reached 0 or below, if we go under 0, ignore the last subtraction as a division step
+				if(comp_rest_result='0') then
+					div_step <= div_step_increment_result;
+				end if;
+			finish <= '1';
+			end if;
+		end if;
+		
 	end if;
 elsif(divisor_eq_zero='1') then
 	finish <= '1';	--finish directly if we try to divide by 0
