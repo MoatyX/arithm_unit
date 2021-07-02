@@ -40,16 +40,22 @@ T_clk <= NOT T_clk after PERIOD;
 
 tester: process(T_operation_finished, T_clk)
 variable tested_entries: integer := 0;
+variable wait_1_clk: boolean := false;
 begin
 
-if(falling_edge(T_clk) AND T_reset='1') then
-	T_reset <= '0';
+--increment the input of the divider, and wait 1clk before setting T_reset to 0
+--the divider does not see input change, when reset and input change on the flank
+if(falling_edge(T_clk) AND T_reset='1' AND NOT wait_1_clk) then
+	wait_1_clk := true;
 	T_dividend <= STD_ULOGIC_VECTOR(UNSIGNED(T_dividend) + 1);
 	tested_entries := tested_entries + 1;
 	if(tested_entries > 15) then
 		T_divisor <= STD_ULOGIC_VECTOR(UNSIGNED(T_divisor) + 1);
 		tested_entries := 0;
 	end if;
+elsif(falling_edge(T_clk) AND T_reset='1' AND wait_1_clk) then
+	T_reset <= '0';
+	wait_1_clk := false;
 end if;
 
 if (T_operation_finished ='1' AND T_reset='0') then
@@ -59,7 +65,7 @@ end process;
 
 simfinish: process
 begin
-	wait until T_divisor="0111";
+	wait until T_divisor="0111" AND T_dividend="0111" AND T_operation_finished='1';
     	assert false
       	report "simulation finished"
       	severity failure;

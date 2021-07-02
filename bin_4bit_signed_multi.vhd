@@ -7,9 +7,10 @@ use IEEE.std_logic_unsigned.all;
 -- summary: multiplies 2 4bit numbers
 
 entity bin_4bit_signed_multi is 
-	 port(	clk,reset : in std_ulogic;
-		op1 :in std_ulogic_vector(3 downto 0);
-		op2 :in std_ulogic_vector(3 downto 0);
+	 port(	clk : in std_ulogic;
+		reset : in std_ulogic := '0';
+		op1 :in std_ulogic_vector(3 downto 0) := "0000";
+		op2 :in std_ulogic_vector(3 downto 0) := "0000";
 		Result	 :out std_logic_vector(7 downto 0)
 		);
 end bin_4bit_signed_multi;
@@ -62,6 +63,7 @@ output_is_negative <= (NOT op1_is_pos OR abs_op1_overflow) XOR (NOT op2_is_pos O
 Multiplizierer : process(clk)
 variable pv,bp: std_logic_vector(7 downto 0);
 begin
+if(rising_edge(clk)) then
 pv:="00000000";
 bp:="0000"&std_logic_vector(abs_op2);
 for I in 0 to 3 loop
@@ -72,12 +74,13 @@ for I in 0 to 3 loop
 end loop;
 finish<='1';
 tmp_output<=pv;
---Result<=pv;
+end if;
 end process;
+
+
 EndCal:process(finish, tmp_output, negated_tmp_output)
 begin
 if finish='1' then
- --Result<=pv;
 	if(output_is_negative='1') then
 		Result <= std_logic_vector(negated_tmp_output);
 	else
