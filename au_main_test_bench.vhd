@@ -84,10 +84,10 @@ end process;
 
 end waveforms;
 
-configuration one of bin_4bit_signed_divider_test_bench is
+configuration one of au_main_test_bench is
 	for waveforms
-		for divider:bin_4bit_signed_divider
-			use entity work.bin_4bit_signed_divider(logic);
+		for main:au_main
+			use entity work.au_main(logic);
 		end for;
 	end for;
 end one;
