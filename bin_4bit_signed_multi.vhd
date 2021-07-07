@@ -12,11 +12,15 @@ entity bin_4bit_signed_multi is
 		op1 :in std_ulogic_vector(3 downto 0) := "0000";
 		op2 :in std_ulogic_vector(3 downto 0) := "0000";
 		Result	 :out std_logic_vector(7 downto 0)
+		
 		);
 end bin_4bit_signed_multi;
 
 architecture Logic of bin_4bit_signed_multi is
-
+	
+	signal pv_temp:  std_ulogic_vector(7 downto 0);
+	signal pb_temp:  std_ulogic_vector(7 downto 0);
+	signal out_temp:  std_ulogic_vector(7 downto 0);
 COMPONENT bin_4bit_abs is
 PORT(	input: in std_ulogic_vector(3 downto 0);
 	abs_output: out std_ulogic_vector(3 downto 0);
@@ -38,7 +42,16 @@ port(	number: in std_ulogic_vector(7 downto 0);		--the input
 	overflow: out std_ulogic				--the overflow flag. happens at abs(-8) = -8
 );
 end COMPONENT;
-
+COMPONENT bin_8bit_adder is
+    port(
+        opA: in std_ulogic_vector(7 downto 0);	--1st operand
+        opB: in std_ulogic_vector(7 downto 0);	--2nd operand
+        result: out std_ulogic_vector (7 downto 0);
+        carry_in: in std_ulogic;
+        carry_out: out std_ulogic;
+	overflow: out std_ulogic
+    );
+end COMPONENT;
 SIGNAL abs_op1, abs_op2: std_ulogic_vector(3 downto 0);
 SIGNAL abs_op1_overflow, abs_op2_overflow: std_ulogic;
 SIGNAL op1_is_pos, op2_is_pos: std_ulogic;
@@ -46,9 +59,9 @@ SIGNAL finish :std_ulogic;
 Signal tmp_output :std_logic_vector(7 downto 0);
 SIGNAL negated_tmp_output :std_ulogic_vector(7 downto 0);
 SIGNAL output_is_negative: std_ulogic;
-
+signal abs_op1_temp : std_ulogic_vector(7 downto 0);
 begin
-
+abs_op1_temp <= std_ulogic_vector(resize(unsigned(abs_op1),abs_op1_temp'length));
 -- abs
 op1_abs: bin_4bit_abs PORT MAP(op1, abs_op1, abs_op1_overflow);
 op2_abs: bin_4bit_abs PORT MAP(op2, abs_op2, abs_op2_overflow);
@@ -60,20 +73,27 @@ op2_is_pos_comp: bin_4bit_comparator PORT MAP(op2, "0000", "011", op2_is_pos);
 output_negator: bin_8bit_negator PORT MAP(std_ulogic_vector(tmp_outPut), negated_tmp_output, OPEN);
 
 output_is_negative <= (NOT op1_is_pos OR abs_op1_overflow) XOR (NOT op2_is_pos OR abs_op2_overflow);
+
+multi : bin_8bit_adder PORT MAP (pv_temp , pb_temp, out_temp, '0',open,open);
 Multiplizierer : process(clk)
-variable pv,bp: std_logic_vector(7 downto 0);
+ variable pv: std_ulogic_vector(7 downto 0);
+	variable bp: std_logic_vector(7 downto 0);
 begin
 if(rising_edge(clk)) then
 pv:="00000000";
 bp:="0000"&std_logic_vector(abs_op2);
+
 for I in 0 to 3 loop
 	if abs_op1(i)='1' then 
-		pv:=pv+bp;
+		--pv:=pv+bp;
+		pv_temp <= std_ulogic_vector(pv);
+		pb_temp <= std_ulogic_vector(bp);
+		pv := out_temp;
 	end if;
 	bp:=bp(6 downto 0)&'0';
 end loop;
 finish<='1';
-tmp_output<=pv;
+tmp_output<=std_logic_vector(out_temp);
 end if;
 end process;
 
