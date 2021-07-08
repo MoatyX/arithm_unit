@@ -118,12 +118,15 @@ end loop;
 end process;
 
 
-EndCal:process(finish)
+EndCal:process(finish, negated_tmp_output, tmp_output)
 begin
+report "sexxxx";
 if finish='1' then
 	if(output_is_negative='1') then
+		report "postive sex";
 		Result <= std_logic_vector(negated_tmp_output);
 	else
+		report "negative sex";
 		Result <= std_logic_vector(tmp_output);
 	end if;
 end if;
