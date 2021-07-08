@@ -13,15 +13,17 @@ architecture waveforms of bin_4bit_signed_multi_test_bench is
 	signal	T_Operant1 : std_logic_vector(3 downto 0) := "1000";
 	signal	T_Operant2 : std_logic_vector(3 downto 0) := "1000";
 	signal	T_Result :std_logic_vector(7 downto 0);
+	signal	T_operation_finished: std_ulogic := '0';
 	component bin_4bit_signed_multi
 		port(	clk, reset : in std_ulogic;
 		op1 :in std_ulogic_vector(3 downto 0);
 		op2 :in std_ulogic_vector(3 downto 0);
-		Result	 :out std_logic_vector(7 downto 0)
+		Result	 :out std_logic_vector(7 downto 0);
+		operation_finished: out std_ulogic := '0'
 		);
 		end component;
 	begin
-	multi_inst: bin_4bit_signed_multi port map(T_clk, T_reset, std_ulogic_vector(T_Operant1), std_ulogic_vector(T_Operant2), T_Result);
+	multi_inst: bin_4bit_signed_multi port map(T_clk, T_reset, std_ulogic_vector(T_Operant1), std_ulogic_vector(T_Operant2), T_Result, T_operation_finished);
 
 	clock_gen: process
 	begin
@@ -31,12 +33,17 @@ architecture waveforms of bin_4bit_signed_multi_test_bench is
 		wait for 50 ps;
 	end process clock_gen;
 
-	testing: process(T_clk)
+	testing: process(T_clk, T_operation_finished, T_reset)
 	begin
-		if(falling_edge(T_clk)) then
-			T_Operant2 <= T_Operant2 + '1';
-			if(T_Operant2 = "0111") then
-				T_Operant1 <= T_Operant1 + '1';
+		if rising_edge(T_clk) AND T_reset = '1' then
+			T_reset <= '0';
+		else
+			if(falling_edge(T_clk) AND T_operation_finished='1') then
+				T_reset <= '1';
+				T_Operant2 <= T_Operant2 + '1';
+				if(T_Operant2 = "0111") then
+					T_Operant1 <= T_Operant1 + '1';
+				end if;
 			end if;
 		end if;
 	end process testing;
@@ -44,7 +51,6 @@ architecture waveforms of bin_4bit_signed_multi_test_bench is
 
 simfinish: process
 begin
-	--wait for 15*15*40 ns;
 	wait until T_Operant1 = "0111";
 	wait until T_Operant2 = "0111";
     	assert false

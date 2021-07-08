@@ -13,8 +13,8 @@ entity bin_4bit_signed_multi is
 		reset : in std_ulogic := '0';
 		op1 :in std_ulogic_vector(3 downto 0) := "0000";
 		op2 :in std_ulogic_vector(3 downto 0) := "0000";
-		Result	 :out std_logic_vector(7 downto 0)
-		
+		Result	 :out std_logic_vector(7 downto 0);
+		operation_finished: out std_ulogic := '0'	
 		);
 end bin_4bit_signed_multi;
 
@@ -80,18 +80,21 @@ output_is_negative <= (NOT op1_is_pos OR abs_op1_overflow) XOR (NOT op2_is_pos O
 	
 multi : bin_8bit_adder PORT MAP (pv_temp , pb_temp, out_temp, '0',open,open);
 
-Multiplizierer : process
- variable pv: std_ulogic_vector(7 downto 0);
-	variable bp: std_logic_vector(7 downto 0);
+operation_finished <= finish;
 
+Multiplizierer : process
+variable pv: std_ulogic_vector(7 downto 0);
+variable bp: std_logic_vector(7 downto 0);
 begin
 
---if(rising_edge(clk)) then
 wait until rising_edge(clk);
-pv := "00000000";
-bp :="0000"&std_logic_vector(abs_op2);
-counter <= To_integer(unsigned(abs_op1));
-for I in 1 to counter loop
+if reset='1' then
+	finish <= '0';
+else
+	pv := "00000000";
+	bp :="0000"&std_logic_vector(abs_op2);
+	counter <= To_integer(unsigned(abs_op1));
+	for I in 1 to counter loop
 		pv_temp <= std_ulogic_vector(pv);
 		pb_temp <= std_ulogic_vector(bp);
   		wait until rising_edge(clk);
@@ -101,11 +104,20 @@ for I in 1 to counter loop
 		else 
 			pv := std_ulogic_vector(out_temp);
 		end if;
-end loop;
+	end loop;
+end if;
+
 end process;
 
+resetProcess: process(reset)
+begin
+	if reset='1' then
+		--finish <= '0';
+	else
+	end if;
+end process;
 
-EndCal:process(finish, negated_tmp_output, tmp_output)
+EndCal:process(finish, negated_tmp_output, tmp_output, reset)
 begin
 if finish='1' then
 	if(output_is_negative='1') then

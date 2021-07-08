@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity AU is
+entity au_main_algorithm is
 port( 	reset: in std_ulogic := '0';
 	operandA: in std_ulogic_vector (3 downto 0);
 	operandB: in std_ulogic_vector (3 downto 0);
@@ -11,9 +11,9 @@ port( 	reset: in std_ulogic := '0';
 	operation_finished: out std_ulogic := '1';
 	division_by_zero: out std_ulogic
 );
-end AU;
+end au_main_algorithm;
 
-architecture algorithm of AU is
+architecture algorithm of au_main_algorithm is
 begin
 process
 variable div_zero: boolean := false;

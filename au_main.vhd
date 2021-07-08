@@ -35,7 +35,8 @@ component bin_4bit_signed_multi is
 	 port(	clk,reset : in std_ulogic;
 		op1 :in std_ulogic_vector(3 downto 0);
 		op2 :in std_ulogic_vector(3 downto 0);
-		Result	 :out std_logic_vector(7 downto 0)
+		Result	 :out std_logic_vector(7 downto 0);
+		operation_finished: out std_ulogic
 		);
 end component;
 
@@ -68,7 +69,7 @@ signal sub_output: std_ulogic_vector (7 downto 0);
 signal add_output: std_ulogic_vector (7 downto 0);
 signal div_output: std_ulogic_vector (3 downto 0);
 signal multi_output: std_logic_vector (7 downto 0);
-
+signal multi_operation_finished: std_ulogic;
 signal div_operation_finished: std_ulogic;
 
 signal adder_overflowed, subber_overflowed: std_ulogic;
@@ -82,7 +83,7 @@ opA <= std_ulogic_vector(resize(signed(operandA), opA'length));
 opB <= std_ulogic_vector(resize(signed(operandB), opB'length));
 
 divider: bin_4bit_signed_divider PORT MAP(clk, reset, operandA, operandB, div_output, division_by_zero, div_operation_finished);
-multiplier: bin_4bit_signed_multi PORT MAP(clk, reset, operandA, operandB, multi_output);
+multiplier: bin_4bit_signed_multi PORT MAP(clk, reset, operandA, operandB, multi_output, multi_operation_finished);
 adder: bin_8bit_adder PORT MAP(opA, opB, add_output, '0', OPEN, adder_overflowed);
 subtractor: bin_8bit_subtractor PORT MAP(opA, opB, sub_output, '0', OPEN, subber_overflowed);
 
@@ -93,7 +94,8 @@ output_sigment <= std_ulogic_vector(add_output)when operation = "00" else
 	 std_ulogic_vector(resize(signed(div_output), output'length)) when operation = "11";
  output <= output_sigment;
 
-operation_finished <= div_operation_finished when operation = "11" else '1';
+operation_finished <= div_operation_finished when operation = "11" else
+		      multi_operation_finished when operation = "10" else '1';
 
 operA_sig: process(operandA)
 begin
