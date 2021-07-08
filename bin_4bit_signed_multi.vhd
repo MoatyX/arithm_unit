@@ -91,42 +91,26 @@ wait until rising_edge(clk);
 pv := "00000000";
 bp :="0000"&std_logic_vector(abs_op2);
 counter <= To_integer(unsigned(abs_op1));
---pv_temp <= "00000000";
 for I in 1 to counter loop
-	--if abs_op1(i)='1' then 
-		--pv:=pv+bp;
 		pv_temp <= std_ulogic_vector(pv);
---wait until rising_edge(clk);
 		pb_temp <= std_ulogic_vector(bp);
   		wait until rising_edge(clk);
 		if( I = counter) then 
 			finish <= '1';
 			tmp_output<=std_logic_vector(out_temp);
-			--wait until rising_edge(clk);
 		else 
 			pv := std_ulogic_vector(out_temp);
 		end if;
-		  --wait until rising_edge(clk);
---wait for 10 ns;
-	--end if--
---bp:=bp(6 downto 0)&'0';
 end loop;
-
---tmp_output<=std_logic_vector(out_temp);
---finish<='1';
---end if;
 end process;
 
 
 EndCal:process(finish, negated_tmp_output, tmp_output)
 begin
-report "sexxxx";
 if finish='1' then
 	if(output_is_negative='1') then
-		report "postive sex";
 		Result <= std_logic_vector(negated_tmp_output);
 	else
-		report "negative sex";
 		Result <= std_logic_vector(tmp_output);
 	end if;
 end if;
