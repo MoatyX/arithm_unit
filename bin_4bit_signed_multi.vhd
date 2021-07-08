@@ -3,6 +3,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use IEEE.std_logic_unsigned.all;
+USE ieee.numeric_std.ALL;
+library std;
 
 -- summary: multiplies 2 4bit numbers
 
@@ -18,9 +20,8 @@ end bin_4bit_signed_multi;
 
 architecture Logic of bin_4bit_signed_multi is
 	
-	signal pv_temp:  std_ulogic_vector(7 downto 0);
-	signal pb_temp:  std_ulogic_vector(7 downto 0);
-	signal out_temp:  std_ulogic_vector(7 downto 0);
+	
+	
 COMPONENT bin_4bit_abs is
 PORT(	input: in std_ulogic_vector(3 downto 0);
 	abs_output: out std_ulogic_vector(3 downto 0);
@@ -42,6 +43,9 @@ port(	number: in std_ulogic_vector(7 downto 0);		--the input
 	overflow: out std_ulogic				--the overflow flag. happens at abs(-8) = -8
 );
 end COMPONENT;
+	signal pv_temp:		std_ulogic_vector(7 downto 0);
+	signal pb_temp:		std_ulogic_vector(7 downto 0) :="00000000";
+	signal out_temp:	std_ulogic_vector(7 downto 0) :="00000000";
 COMPONENT bin_8bit_adder is
     port(
         opA: in std_ulogic_vector(7 downto 0);	--1st operand
@@ -55,11 +59,12 @@ end COMPONENT;
 SIGNAL abs_op1, abs_op2: std_ulogic_vector(3 downto 0);
 SIGNAL abs_op1_overflow, abs_op2_overflow: std_ulogic;
 SIGNAL op1_is_pos, op2_is_pos: std_ulogic;
-SIGNAL finish :std_ulogic;
+SIGNAL finish :std_ulogic :='0' ;
 Signal tmp_output :std_logic_vector(7 downto 0);
 SIGNAL negated_tmp_output :std_ulogic_vector(7 downto 0);
 SIGNAL output_is_negative: std_ulogic;
 signal abs_op1_temp : std_ulogic_vector(7 downto 0);
+signal counter: integer :=0;
 begin
 abs_op1_temp <= std_ulogic_vector(resize(unsigned(abs_op1),abs_op1_temp'length));
 -- abs
@@ -71,34 +76,40 @@ op1_is_pos_comp: bin_4bit_comparator PORT MAP(op1, "0000", "011", op1_is_pos);
 op2_is_pos_comp: bin_4bit_comparator PORT MAP(op2, "0000", "011", op2_is_pos);
 
 output_negator: bin_8bit_negator PORT MAP(std_ulogic_vector(tmp_outPut), negated_tmp_output, OPEN);
-
 output_is_negative <= (NOT op1_is_pos OR abs_op1_overflow) XOR (NOT op2_is_pos OR abs_op2_overflow);
-
+	
 multi : bin_8bit_adder PORT MAP (pv_temp , pb_temp, out_temp, '0',open,open);
+
 Multiplizierer : process(clk)
  variable pv: std_ulogic_vector(7 downto 0);
 	variable bp: std_logic_vector(7 downto 0);
-begin
-if(rising_edge(clk)) then
-pv:="00000000";
-bp:="0000"&std_logic_vector(abs_op2);
 
-for I in 0 to 3 loop
-	if abs_op1(i)='1' then 
+begin
+
+if(rising_edge(clk)) then
+
+pv := "00000000";
+bp :="0000"&std_logic_vector(abs_op2);
+counter <= To_integer(unsigned(abs_op1));
+--pv_temp <= "00000000";
+for I in 0 to counter loop
+	--if abs_op1(i)='1' then 
 		--pv:=pv+bp;
 		pv_temp <= std_ulogic_vector(pv);
 		pb_temp <= std_ulogic_vector(bp);
-		pv := out_temp;
-	end if;
-	bp:=bp(6 downto 0)&'0';
+		pv := std_ulogic_vector(out_temp);
+--wait for 10 ns;
+	--end if--
+--bp:=bp(6 downto 0)&'0';
 end loop;
-finish<='1';
+
 tmp_output<=std_logic_vector(out_temp);
+finish<='1';
 end if;
 end process;
 
 
-EndCal:process(finish, tmp_output, negated_tmp_output)
+EndCal:process(finish,tmp_output)
 begin
 if finish='1' then
 	if(output_is_negative='1') then
