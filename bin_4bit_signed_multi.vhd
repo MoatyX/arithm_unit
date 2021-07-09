@@ -63,12 +63,12 @@ SIGNAL finish :std_ulogic :='0' ;
 Signal tmp_output :std_logic_vector(7 downto 0);
 SIGNAL negated_tmp_output :std_ulogic_vector(7 downto 0);
 SIGNAL output_is_negative: std_ulogic;
-signal abs_op1_temp : std_ulogic_vector(7 downto 0);
-signal counter: integer :=-1;
-SIGNAL delay : integer :=0 ;
-SIGNAL started : std_ulogic :='0';
+--signal abs_op1_temp : std_ulogic_vector(7 downto 0);
+signal counter: integer :=-1; -- otherwise on strat will counter and delay have the same value that will cause to set finish to 1
+SIGNAL delay : integer :=0 ;	-- variable will be counted up by every iteration to know if the addition loop has been finished
+SIGNAL started : std_ulogic :='0'; -- will be set after setting the counter otherwise (pv and pb ) will be resetd every iteration 
 begin
-abs_op1_temp <= std_ulogic_vector(resize(unsigned(abs_op1),abs_op1_temp'length));
+--abs_op1_temp <= std_ulogic_vector(resize(unsigned(abs_op1),abs_op1_temp'length));
 -- abs
 op1_abs: bin_4bit_abs PORT MAP(op1, abs_op1, abs_op1_overflow);
 op2_abs: bin_4bit_abs PORT MAP(op2, abs_op2, abs_op2_overflow);
@@ -102,15 +102,12 @@ else
 	if(rising_edge(clk) )then --suspends the process until the change occurs on the signal
 		started <= '1';
 	end if;
-	
-	--for I in 0 to 7 loop
+
 		pv_temp <= std_ulogic_vector(pv);
 		pb_temp <= std_ulogic_vector(bp);
-	--wait until rising_edge(clk);
-  		--next when delay = 4;
-		--if( I = counter) then 
-if(rising_edge(clk) )then 
-end if;
+
+		if(rising_edge(clk) )then 
+		end if;
 		if((delay = counter) and (started = '1'))then
 			finish <= '1';
 			tmp_output<=std_logic_vector(out_temp);
@@ -118,8 +115,6 @@ end if;
 		else 
 			pv := std_ulogic_vector(out_temp);
 		end if;
-	--end loop;
-	
 end if;
 
 end process;
@@ -143,7 +138,8 @@ case delay is
 	when 4 => delay <= 5;
 	when 5 => delay <= 6;
 	when 6 => delay <= 7;
-	when 7 => delay <= 0;
+	when 7 => delay <= 8;
+	when 8 => delay <= 0;
 	when others => delay <=0;
 	end case;
 end if;
