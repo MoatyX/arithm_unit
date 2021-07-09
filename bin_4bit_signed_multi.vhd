@@ -64,7 +64,9 @@ Signal tmp_output :std_logic_vector(7 downto 0);
 SIGNAL negated_tmp_output :std_ulogic_vector(7 downto 0);
 SIGNAL output_is_negative: std_ulogic;
 signal abs_op1_temp : std_ulogic_vector(7 downto 0);
-signal counter: integer :=0;
+signal counter: integer :=-1;
+SIGNAL delay : integer :=0 ;
+SIGNAL started : std_ulogic :='0';
 begin
 abs_op1_temp <= std_ulogic_vector(resize(unsigned(abs_op1),abs_op1_temp'length));
 -- abs
@@ -82,29 +84,42 @@ multi : bin_8bit_adder PORT MAP (pv_temp , pb_temp, out_temp, '0',open,open);
 
 operation_finished <= finish;
 
-Multiplizierer : process
+Multiplizierer : process(clk,delay,started)
 variable pv: std_ulogic_vector(7 downto 0);
 variable bp: std_logic_vector(7 downto 0);
 begin
-
-wait until rising_edge(clk);
+counter <= To_integer(unsigned(abs_op1));
+--wait until rising_edge(clk);
 if reset='1' then
 	finish <= '0';
+	started <= '0';
 else
-	pv := "00000000";
-	bp :="0000"&std_logic_vector(abs_op2);
-	counter <= To_integer(unsigned(abs_op1));
-	for I in 1 to counter loop
+	if( started = '0') then -- to not reset the the variable evry time the process called 
+		pv := "00000000";
+		bp :="0000"&std_logic_vector(abs_op2);
+		--wait until rising_edge(clk);
+	end if;
+	if(rising_edge(clk) )then --suspends the process until the change occurs on the signal
+		started <= '1';
+	end if;
+	
+	--for I in 0 to 7 loop
 		pv_temp <= std_ulogic_vector(pv);
 		pb_temp <= std_ulogic_vector(bp);
-  		wait until rising_edge(clk);
-		if( I = counter) then 
+	--wait until rising_edge(clk);
+  		--next when delay = 4;
+		--if( I = counter) then 
+if(rising_edge(clk) )then 
+end if;
+		if((delay = counter) and (started = '1'))then
 			finish <= '1';
 			tmp_output<=std_logic_vector(out_temp);
+			started <= '0';
 		else 
 			pv := std_ulogic_vector(out_temp);
 		end if;
-	end loop;
+	--end loop;
+	
 end if;
 
 end process;
@@ -116,7 +131,24 @@ begin
 	else
 	end if;
 end process;
-
+delayProcess: process(clk,delay)
+begin
+if (rising_edge(clk)) then 
+case delay is
+	when (-1) => delay <=0 ;
+	when 0 => delay <= 1;
+	when 1 => delay <= 2;
+	when 2 => delay <= 3;
+	when 3 => delay <= 4;
+	when 4 => delay <= 5;
+	when 5 => delay <= 6;
+	when 6 => delay <= 7;
+	when 7 => delay <= 0;
+	when others => delay <=0;
+	end case;
+end if;
+--wait until rising_edge(clk);
+end process;
 EndCal:process(finish, negated_tmp_output, tmp_output, reset)
 begin
 if finish='1' then
