@@ -84,25 +84,29 @@ multi : bin_8bit_adder PORT MAP (pv_temp , pb_temp, out_temp, '0',open,open);
 
 operation_finished <= finish;
 
-Multiplizierer : process(clk,delay,started)
+Multiplizierer : process(clk,delay,started,reset)
 variable pv: std_ulogic_vector(7 downto 0);
 variable bp: std_logic_vector(7 downto 0);
 begin
 counter <= To_integer(unsigned(abs_op1));
---wait until rising_edge(clk);
+--wait until rising_edge(clk);
 if reset='1' then
 	finish <= '0';
 	started <= '0';
 else
 	if( started = '0') then -- to not reset the the variable evry time the process called 
+		if abs_op1="0000" OR abs_op2="0000" then
+			finish <= '1';
+			tmp_output <= "00000000";
+		else
 		pv := "00000000";
 		bp :="0000"&std_logic_vector(abs_op2);
+		end if;
 		--wait until rising_edge(clk);
 	end if;
 	if(rising_edge(clk) )then --suspends the process until the change occurs on the signal
 		started <= '1';
 	end if;
-
 		pv_temp <= std_ulogic_vector(pv);
 		pb_temp <= std_ulogic_vector(bp);
 
@@ -116,7 +120,6 @@ else
 			pv := std_ulogic_vector(out_temp);
 		end if;
 end if;
-
 end process;
 
 resetProcess: process(reset)
