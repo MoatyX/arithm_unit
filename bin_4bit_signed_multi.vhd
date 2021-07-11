@@ -1,4 +1,3 @@
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -112,6 +111,8 @@ else
 	end if;
 	if((abs_op1 = "0000" or abs_op2 = "0000") and rising_edge(clk) ) then
 		finish <= '1';
+	pv_temp <= "00000000";
+	pb_temp <= "00000000";
 		tmp_output<="00000000";
 		started <= '0';
 	end if;
@@ -138,9 +139,12 @@ begin
 	else
 	end if;
 end process;
-delayProcess: process(clk,delay)
+delayProcess: process(clk,delay,reset)
 begin
 if (rising_edge(clk)) then 
+if reset = '1' then 
+	delay <= 0;
+else 
 case delay is
 	when (-1) => delay <=0 ;
 	when 0 => delay <= 1;
@@ -155,6 +159,7 @@ case delay is
 	when others => delay <=0;
 	end case;
 end if;
+end if ;
 --wait until rising_edge(clk);
 end process;
 EndCal:process(finish, negated_tmp_output, tmp_output, reset)
