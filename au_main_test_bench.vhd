@@ -43,20 +43,37 @@ begin
 
 --division requires special handeling with the reset signal
 if(T_operation ="11") then
-if(falling_edge(T_clk) AND T_reset='1') then
-	T_reset <= '0';
-	T_operandA <= STD_ULOGIC_VECTOR(UNSIGNED(T_operandA) + 1);
-	tested_entries := tested_entries + 1;
-	if(tested_entries > 15) then
-		T_operandB <= STD_ULOGIC_VECTOR(UNSIGNED(T_operandB) + 1);
-		tested_entries := 0;
+	if(falling_edge(T_clk) AND T_reset='1') then
+		T_reset <= '0';
+		T_operandA <= STD_ULOGIC_VECTOR(UNSIGNED(T_operandA) + 1);
+		tested_entries := tested_entries + 1;
+		if(tested_entries > 15) then
+			T_operandB <= STD_ULOGIC_VECTOR(UNSIGNED(T_operandB) + 1);
+			tested_entries := 0;
+		end if;
 	end if;
-end if;
 
-if (T_operation_finished ='1' AND T_reset='0') then
-	T_reset <= '1';
-end if;
+	if (T_operation_finished ='1' AND T_reset='0') then
+		T_reset <= '1';
+	end if;
 
+elsif(T_operation="10") then
+	if (rising_edge(T_clk)) then
+		if  (T_reset = '1' ) then
+			T_reset <= '0';
+		end if;
+		
+	end if;
+	if (rising_edge(T_clk) and T_reset = '0' AND T_operation_finished = '1') then 	
+		T_reset <= '1';
+		T_operandA <= STD_ULOGIC_VECTOR(UNSIGNED(T_operandA) + 1);
+		if(T_operandA = "0111") then
+			T_operandB <= STD_ULOGIC_VECTOR(UNSIGNED(T_operandB) + 1);
+			if(T_operandB = "0111") then
+				T_operation <= std_ulogic_vector(signed(T_operation) + 1);
+			end if;
+		end if; 
+	end if;
 else
 	if(rising_edge(T_clk)) then
 		T_operandA <= std_ulogic_vector(signed(T_operandA) + 1);
