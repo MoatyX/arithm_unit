@@ -2,10 +2,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity arithm_unit_test_bench is
-end arithm_unit_test_bench;
+entity au_main_algorithm_testbench is
+end au_main_algorithm_testbench;
 
-architecture waveforms of arithm_unit_test_bench is
+architecture waveforms of au_main_algorithm_testbench is
 	SIGNAL T_reset: std_ulogic := '0';
 	SIGNAL T_operandA: std_ulogic_vector (3 downto 0) := "1000";
 	SIGNAL T_operandB: std_ulogic_vector (3 downto 0) := "1000";
@@ -17,7 +17,7 @@ architecture waveforms of arithm_unit_test_bench is
 	--sim
 	constant PERIOD: time := 40 ns;
 
-	COMPONENT AU PORT (
+	COMPONENT au_main_algorithm PORT (
 		reset: in std_ulogic := '0';
 		operandA: in std_ulogic_vector (3 downto 0);
 		operandB: in std_ulogic_vector (3 downto 0);
@@ -29,7 +29,7 @@ architecture waveforms of arithm_unit_test_bench is
 	END COMPONENT;
 begin
 
-main: AU PORT MAP(T_reset, T_operandA, T_operandB, T_operation, T_output, T_operation_finished, T_division_by_zero);
+main: au_main_algorithm PORT MAP(T_reset, T_operandA, T_operandB, T_operation, T_output, T_operation_finished, T_division_by_zero);
 
 tester: process
 begin
@@ -56,10 +56,10 @@ end process;
 
 end waveforms;
 
-configuration one of arithm_unit_test_bench is
+configuration one of au_main_algorithm_testbench is
 	for waveforms
-		for main:AU
-			use entity work.AU(logic);
+		for main:au_main_algorithm
+			use entity work.au_main_algorithm(logic);
 		end for;
 	end for;
 end one;

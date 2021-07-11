@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compile of abs_test.vhd was successful.
 # Compile of arithm_unit_main.vhd was successful.
 # Compile of arithm_unit_main_test_bench.vhd was successful.
@@ -53,3 +54,62 @@
 # Compile of ha_test_bench.vhd was successful.
 # Compile of half_adder.vhd was successful.
 # 26 compiles, 0 failed with no errors.
+=======
+# Compile of au_main_test_bench.vhd was successful.
+vsim -gui work.au_main_test_bench
+# vsim -gui work.au_main_test_bench 
+# Start time: 17:42:23 on Jul 11,2021
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.au_main_test_bench(waveforms)
+# Loading work.au_main(logic)
+# Loading work.bin_4bit_signed_divider(logic)
+# Loading work.bin_4bit_abs(logic)
+# Loading work.bin_4bit_negator(logic)
+# Loading work.bin_4bit_adder(logic)
+# Loading work.full_adder(logic)
+# Loading work.half_adder(logic)
+# Loading work.bin_4bit_comparator(logic)
+# Loading work.bin_4bit_subtractor(logic)
+# Loading work.bin_4bit_signed_multi(logic)
+# Loading work.bin_8bit_negator(logic)
+# Loading work.bin_8bit_adder(logic)
+# Loading work.bin_8bit_subtractor(logic)
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/divider/comp_zero/subber/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/divider/comp_divisor_eq_zero/subber/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/divider/comp_dividend_negative/subber/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/divider/comp_divisor_negative/subber/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/divider/subber/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/divider/comp_rest/subber/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/multiplier/op1_is_pos_comp/subber/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/multiplier/op2_is_pos_comp/subber/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /au_main_test_bench/main/subtractor/addr/carry_out has no driver.
+# This port will contribute value (U) to the signal network.
+add wave -position insertpoint sim:/au_main_test_bench/*
+force -freeze sim:/au_main_test_bench/T_clk 1 0, 0 {50 ps} -r 100
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /au_main_test_bench/main/multiplier
+# ** Failure: simulation finished
+#    Time: 239350 ps  Iteration: 1  Process: /au_main_test_bench/simfinish File: C:/Users/moaty/Desktop/DD/arithm_unit/au_main_test_bench.vhd
+# Break in Process simfinish at C:/Users/moaty/Desktop/DD/arithm_unit/au_main_test_bench.vhd line 98
+quit -sim
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (C:/Users/moaty/Desktop/DD/arithm_unit/arithm_unit.mpf).  File can not be renamed.
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (C:/Users/moaty/Desktop/DD/arithm_unit/arithm_unit.mpf).  File can not be renamed.
+# End time: 17:43:34 on Jul 11,2021, Elapsed time: 0:01:11
+# Errors: 3, Warnings: 12
+>>>>>>> nour
