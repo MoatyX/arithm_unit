@@ -2,9 +2,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use IEEE.std_logic_unsigned.all;
-USE ieee.numeric_std.ALL;
-library std;
+--use IEEE.std_logic_unsigned.all;
+--USE ieee.numeric_std.ALL;
+--library std;
 
 -- summary: multiplies 2 4bit numbers
 
@@ -63,12 +63,11 @@ SIGNAL finish :std_ulogic :='0' ;
 Signal tmp_output :std_logic_vector(7 downto 0);
 SIGNAL negated_tmp_output :std_ulogic_vector(7 downto 0);
 SIGNAL output_is_negative: std_ulogic;
---signal abs_op1_temp : std_ulogic_vector(7 downto 0);
-signal counter: integer :=-1; -- otherwise on strat will counter and delay have the same value that will cause to set finish to 1
+
 SIGNAL delay : integer :=0 ;	-- variable will be counted up by every iteration to know if the addition loop has been finished
 SIGNAL started : std_ulogic :='0'; -- will be set after setting the counter otherwise (pv and pb ) will be resetd every iteration 
 begin
---abs_op1_temp <= std_ulogic_vector(resize(unsigned(abs_op1),abs_op1_temp'length));
+
 -- abs
 op1_abs: bin_4bit_abs PORT MAP(op1, abs_op1, abs_op1_overflow);
 op2_abs: bin_4bit_abs PORT MAP(op2, abs_op2, abs_op2_overflow);
@@ -84,28 +83,37 @@ multi : bin_8bit_adder PORT MAP (pv_temp , pb_temp, out_temp, '0',open,open);
 
 operation_finished <= finish;
 
-Multiplizierer : process(clk,delay,started,reset)
+Multiplizierer : process(clk,delay,started)
 variable pv: std_ulogic_vector(7 downto 0);
 variable bp: std_logic_vector(7 downto 0);
+variable counter: integer :=-1; -- otherwise on strat will counter and delay have the same value that will cause to set finish to 1
 begin
-counter <= To_integer(unsigned(abs_op1));
---wait until rising_edge(clk);
+if(rising_edge(clk))then
+counter := To_integer(unsigned(abs_op1));
+end if;
 if reset='1' then
 	finish <= '0';
 	started <= '0';
-else
+	pv := "00000000";
+	bp := "00000000" ;
+	pv_temp <= "00000000";
+	pb_temp <= "00000000";
+	tmp_output<= "00000000";
+	counter := To_integer(unsigned(abs_op1));
+	if (rising_edge(clk)) then 
+	end if;
+else  
 	if( started = '0') then -- to not reset the the variable evry time the process called 
-		if abs_op1="0000" OR abs_op2="0000" then
-			finish <= '1';
-			tmp_output <= "00000000";
-		else
 		pv := "00000000";
 		bp :="0000"&std_logic_vector(abs_op2);
-		end if;
-		--wait until rising_edge(clk);
 	end if;
 	if(rising_edge(clk) )then --suspends the process until the change occurs on the signal
 		started <= '1';
+	end if;
+	if((abs_op1 = "0000" or abs_op2 = "0000") and rising_edge(clk) ) then
+		finish <= '1';
+		tmp_output<="00000000";
+		started <= '0';
 	end if;
 		pv_temp <= std_ulogic_vector(pv);
 		pb_temp <= std_ulogic_vector(bp);
@@ -120,6 +128,7 @@ else
 			pv := std_ulogic_vector(out_temp);
 		end if;
 end if;
+
 end process;
 
 resetProcess: process(reset)

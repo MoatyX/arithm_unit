@@ -28,24 +28,26 @@ architecture waveforms of bin_4bit_signed_multi_test_bench is
 	clock_gen: process
 	begin
 		T_clk<='1';
-		wait for 50 ps;
+		wait for 50 ns;
 		T_clk<='0';
-		wait for 50 ps;
+		wait for 50 ns;
 	end process clock_gen;
 
-	testing: process(T_clk, T_operation_finished, T_reset)
+	testing: process(T_clk)
 	begin
-		if rising_edge(T_clk) AND T_reset = '1' then
+	if (rising_edge(T_clk)) then
+		if  (T_reset = '1' ) then
 			T_reset <= '0';
-		else
-			if(falling_edge(T_clk) AND T_operation_finished='1') then
-				T_reset <= '1';
-				T_Operant2 <= T_Operant2 + '1';
-				if(T_Operant2 = "0111") then
-					T_Operant1 <= T_Operant1 + '1';
-				end if;
-			end if;
 		end if;
+		
+	end if;
+	if (rising_edge(T_clk) and T_reset = '0' AND T_operation_finished = '1') then 	
+		T_reset <= '1';
+		T_Operant2 <= T_Operant2 + '1';
+		if(T_Operant2 = "0111") then
+			T_Operant1 <= T_Operant1 + '1';
+		end if; 
+	end if;
 	end process testing;
 
 
