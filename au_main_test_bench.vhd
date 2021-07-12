@@ -15,7 +15,8 @@ architecture waveforms of au_main_test_bench is
 	SIGNAL T_output: std_ulogic_vector (7 downto 0) := "00000000";
 	SIGNAL T_operation_finished: std_ulogic := '0';
 	SIGNAL T_division_by_zero: std_ulogic := '0';
-
+	SIGNAL T_opA_sig , T_opB_sig , T_opA_sing_sig , T_opB_sing_sig:  std_logic_vector(6 downto 0) := "1000000";
+	SIGNAL T_output_sign_sig, T_output_10_sig, T_output_1_sig: std_logic_vector(6 downto 0) := "1000000";
 	--sim
 	constant PERIOD: time := 40 ns;
 
@@ -27,12 +28,16 @@ architecture waveforms of au_main_test_bench is
 		operation: in std_ulogic_vector (1 downto 0);	-- "00" add, "01" sub, "10" multi, "11" div
 		output: out std_ulogic_vector (7 downto 0);
 		operation_finished: out std_ulogic;
-		division_by_zero: out std_ulogic
+		division_by_zero: out std_ulogic;
+		opA_sig, opB_sig , opA_sing_sig , opB_sing_sig: out std_logic_vector(6 downto 0) := "1000000";
+		output_sign_sig, output_10_sig, output_1_sig: out std_logic_vector(6 downto 0) := "1000000"
 	);
 	END COMPONENT;
 begin
 
-main: au_main PORT MAP(T_clk, T_reset, T_operandA, T_operandB, T_operation, T_output, T_operation_finished, T_division_by_zero);
+main: au_main PORT MAP(T_clk, T_reset, T_operandA, T_operandB, T_operation, T_output, T_operation_finished, T_division_by_zero ,
+			 T_opA_sig , T_opB_sig , T_opA_sing_sig , T_opB_sing_sig ,
+			 T_output_sign_sig, T_output_10_sig, T_output_1_sig);
 
 --clock
 T_clk <= NOT T_clk after PERIOD;

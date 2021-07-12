@@ -108,15 +108,15 @@ when "1100" => opA_sig <= "0011001";	opA_sing_sig <= "0111111" ;--(-4)
 when "1101" => opA_sig <= "1110000";	opA_sing_sig <= "0111111" ;--(-3)
 when "1110" => opA_sig <= "0100100";	opA_sing_sig <= "0111111" ;--(-2)
 when "1111" => opA_sig <= "1111001";	opA_sing_sig <= "0111111" ;--(-1)
-when "0000" => opA_sig <= "1000000";	--0
-when "0001" => opA_sig <= "1111001";	--1
-when "0010" => opA_sig <= "0100100";	--2
-when "0011" => opA_sig <= "1110000";	--3
-when "0100" => opA_sig <= "0011001";	--4
-when "0101" => opA_sig <= "0010010";	--5
-when "0110" => opA_sig <= "0000010";	--6
-when "0111" => opA_sig <= "0000111";	--7
-when others => opA_sig <= "1111111";	--none
+when "0000" => opA_sig <= "1000000";	opA_sing_sig <= "1111111" ;--0 positive 
+when "0001" => opA_sig <= "1111001";	opA_sing_sig <= "1111111" ;--1
+when "0010" => opA_sig <= "0100100";	opA_sing_sig <= "1111111" ;--2
+when "0011" => opA_sig <= "1110000";	opA_sing_sig <= "1111111" ;--3
+when "0100" => opA_sig <= "0011001";	opA_sing_sig <= "1111111" ;--4
+when "0101" => opA_sig <= "0010010";	opA_sing_sig <= "1111111" ;--5
+when "0110" => opA_sig <= "0000010";	opA_sing_sig <= "1111111" ;--6
+when "0111" => opA_sig <= "0000111";	opA_sing_sig <= "1111111" ;--7
+when others => opA_sig <= "1111111";	opA_sing_sig <= "1111111" ;--none
 end case;
 end process operA_sig;
 
@@ -134,15 +134,15 @@ when "1100" => opB_sig <= "0011001";	opB_sing_sig <= "0111111" ;--(-4)
 when "1101" => opB_sig <= "1110000";	opB_sing_sig <= "0111111" ;--(-3)
 when "1110" => opB_sig <= "0100100";	opB_sing_sig <= "0111111" ;--(-2)
 when "1111" => opB_sig <= "1111001";	opB_sing_sig <= "0111111" ;--(-1)
-when "0000" => opB_sig <= "1000000";	--0
-when "0001" => opB_sig <= "1111001";	--1
-when "0010" => opB_sig <= "0100100";	--2
-when "0011" => opB_sig <= "1110000";	--3
-when "0100" => opB_sig <= "0011001";	--4
-when "0101" => opB_sig <= "0010010";	--5
-when "0110" => opB_sig <= "0000010";	--6
-when "0111" => opB_sig <= "0000111";	--7
-when others => opB_sig <= "1111111";	--none
+when "0000" => opB_sig <= "1000000";	opB_sing_sig <= "1111111" ;--0 positive 
+when "0001" => opB_sig <= "1111001";	opB_sing_sig <= "1111111" ;--1
+when "0010" => opB_sig <= "0100100";	opB_sing_sig <= "1111111" ;--2
+when "0011" => opB_sig <= "1110000";	opB_sing_sig <= "1111111" ;--3
+when "0100" => opB_sig <= "0011001";	opB_sing_sig <= "1111111" ;--4
+when "0101" => opB_sig <= "0010010";	opB_sing_sig <= "1111111" ;--5
+when "0110" => opB_sig <= "0000010";	opB_sing_sig <= "1111111" ;--6
+when "0111" => opB_sig <= "0000111";	opB_sing_sig <= "1111111" ;--7
+when others => opB_sig <= "1111111";	opB_sing_sig <= "1111111" ;--none
 end case;
 end process operB_sig;
 
