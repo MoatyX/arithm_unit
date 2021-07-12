@@ -56,7 +56,7 @@ end process;
 
 end waveforms;
 
-configuration one of arithm_unit_test_bench is
+configuration one of au_main_algorithm_testbench is
 	for waveforms
 		for main:au_main_algorithm
 			use entity work.au_main_algorithm(logic);
