@@ -132,13 +132,7 @@ end if;
 
 end process;
 
-resetProcess: process(reset)
-begin
-	if reset='1' then
-		--finish <= '0';
-	else
-	end if;
-end process;
+
 delayProcess: process(clk,delay,reset)
 begin
 if (rising_edge(clk)) then 
